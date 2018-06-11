@@ -38,6 +38,7 @@
                       <th class="col-md-1">No</th>
                       <th class="col-md-3">Kode Barang</th>
                       <th class="col-md-5">Nama Barang</th>
+                      <th class="col-md-5">Kategori Barang</th>
                       <th class="col-md-3">Aksi</th>
                     </tr>
                   </thead>
@@ -45,6 +46,7 @@
                   <tbody>
                     
                     <tr>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

@@ -31,7 +31,7 @@ class M_supplier extends CI_Model {
     	//K002
     	$this->db->select('Right(spliId,3) as kode',false);
     	
-    	$this->db->order_by('spliId','asc');
+    	$this->db->order_by('spliId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('supplier');
 

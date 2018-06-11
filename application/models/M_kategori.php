@@ -31,7 +31,7 @@ class M_kategori extends CI_Model {
     	//K002
     	$this->db->select('Right(ktgrId,3) as kode',false);
     	
-    	$this->db->order_by('ktgrId','asc');
+    	$this->db->order_by('ktgrId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('kategori');
 

@@ -13,7 +13,7 @@ class C_kategori extends CI_Controller {
         $data = array(
             'page' => 'kategori/datakategori',
             'link' => 'kategori',
-            'list' => $this->M_kategori->list_kategori(),
+            'list' => $this->M_kategori->list_kategori(),            
         );
         $this->load->view('template/wrapper-admin', $data);
     }
@@ -23,6 +23,7 @@ class C_kategori extends CI_Controller {
             'page' => 'kategori/tambahkategori',
             'link' => 'kategori',
             'list' => $this->M_kategori->id_kategori(),
+            'id_kategori' => $this->M_kategori->id_kategori()
         );
         $this->load->view('template/wrapper-admin', $data);
     }
