@@ -40,7 +40,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">ID Kategori</label>
                     <div class="col-sm-3">
-                      <input name="ktgrId" type="text" class="form-control" value="<?=$list?>" maxlength="10" readonly="">
+                      <input name="ktgrId" type="text" class="form-control" value="<?=$id_kategori?>" maxlength="10" readonly="">
                     </div>
                   </div>
                   <div class="form-group">
