@@ -18,8 +18,8 @@ class M_barangmasuk extends CI_Model {
     }
 
     function list_barangmasuk(){
-         $this->db->query('SELECT dbmkBrmkId,brmkTanggal,spliNama,sum(dbmkHarga*dbmkJumlah) as total FROM vw_barangmasuk GROUP BY dbmkBrmkId ORDER BY dbmkBrmkId DESC');
-         return $query = $this->db->get()->result();  
+        $query = $this->db->query("SELECT dbmkBrmkId, brmkTanggal, spliNama, sum(dbmkHarga*dbmkJumlah) as total FROM vw_barangmasuk GROUP BY dbmkBrmkId ORDER BY dbmkBrmkId DESC");
+         return $query;  
     }
 
     function id_barangmasuk(){

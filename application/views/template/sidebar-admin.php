@@ -38,12 +38,12 @@
 						</a>
 					</li>
 					<li class="<?php if($link=='barangmasuk'){echo'active';}?>">
-						<a href="#">
+						<a href="<?=base_url()?>c_barang_masuk">
 							<i class="fa fa-sign-in"></i><span>Data Barang Masuk</span>	
 						</a>
 					</li>
 					<li class="<?php if($link=='barangkeluar'){echo'active';}?>">
-						<a href="#">
+						<a href="<?=base_url()?>c_barang_keluar">
 							<i class="fa fa-sign-out"></i><span>Data Barang Keluar</span>	
 						</a>
 					</li>
