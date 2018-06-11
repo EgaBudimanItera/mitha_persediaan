@@ -60,7 +60,7 @@
                       <td><?=$l->dbmkBrmkId?></td>
                       <td><?=$l->brmkTanggal?></td>
                       <td><?=$l->spliNama?></td>
-                      <td><?=$l->total?></td>
+                      <td>Rp. <?=number_format($l->total, 0, ',', '.')?></td>
                       <td>
                         <a href="<?=base_url()?>c_barang/formubah/<?=$l->dbmkBrmkId?>">
                           <button type="button" class="btn btn-primary">

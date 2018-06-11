@@ -44,3 +44,4 @@
         })
     })
 </script>
+<?php if(isset($script)){$this->load->view($script);}?>

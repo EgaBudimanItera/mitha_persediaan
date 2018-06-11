@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="grid-body">
-                <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang/tambahbarang" method="post">
+                <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang_masuk/tambahbarang" method="post">
                    <div class="form-group">
                     <label class="col-sm-3 control-label">Kode Barang Masuk</label>
                     <div class="col-sm-9">
@@ -71,26 +71,62 @@
                     </div>
                   </div>
                   
-                  <!-- <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="btn-group">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                        <button type="reset" class="btn btn-default">Bersih</button>
+                  <div class="form-group">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-9">
+                      <button type="submit" class="btn btn-primary">Simpan</button>
+                      <!-- <button type="reset" class="btn btn-default">Bersih</button> -->
+                      <a href="#" class="tambahbarangmasukdetail btn btn-danger" >Tambah Detail Barang</a>
+                    </div>
+                  </div>
+                <hr/>
+                <div class="hideBarangMasuk" style="display: none;">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Nama Barang</label>
+                      <div class="col-sm-9">
+                        <select name="barang" id="barang" class="form-control" required>
+                          <option value="">--pilih--</option>
+                          <?php foreach($barang->result() as $data_barang){?>
+                          <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>
+                          <?php }?>
+                        </select>
                       </div>
                     </div>
-                  </div> -->
-                </form>
-                <hr/>
-                <table  class="data-table table table-bordered table-striped" cellspacing="0" width="100%">
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Jumlah Barang</label>
+                      <div class="col-sm-9">
+                        <input type="number" name="jumlahBarang" id="jumlahBarang" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label">Harga Barang</label>
+                      <div class="col-sm-9">
+                        <input type="number" name="hargaBarang" id="hargaBarang" class="form-control">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-3 control-label"></label>
+                      <div class="col-sm-9">
+                        <button type="button" class="btn btn-success tambahdetail"><i class="fa fa-plus"></i> Tambah</button>
+                      </div>
+                    </div>
+                    
+                  
+                </div>
+                <table id="tbDetailBarang"  class="data-table table table-bordered table-striped" cellspacing="0" width="100%">
                   <thead>
-                    <th>No</th>
-                    <th>Nama Barang</th>
-                    <th>Jumlah Barang</th>
-                    <th>Harga Barang</th>
-                    <th><a href="#" style="color:red "><i class="fa fa-plus" ></i>
-                    Tambah Barang</a></th>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Barang</th>
+                      <th>Jumlah Barang</th>
+                      <th>Harga Barang</th>
+                      <th>Aksi</th>
+                    </tr>
                   </thead>
+                  <tbody></tbody>
                 </table>
+                </form>
               </div>
             </div>
           </div>
@@ -103,4 +139,6 @@
        
       </section>
       <!-- END MAIN CONTENT -->
+
+
    

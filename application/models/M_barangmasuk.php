@@ -26,6 +26,10 @@ class M_barangmasuk extends CI_Model {
         return $this->db->get('supplier');
     }
 
+    function list_barang(){
+        return $this->db->get('barang');
+    }
+
     function id_barangmasuk(){
     	//BMmmYY  000001
     	$this->db->select('Right(brmkId,6) as kode',false);
