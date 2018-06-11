@@ -17,4 +17,14 @@ class C_barang_masuk extends CI_Controller {
         );
         $this->load->view('template/wrapper-admin', $data);
 	}
+
+	public function formtambah(){
+		$data = array(
+            'page' => 'barangmasuk/tambahbarangmasuk',
+            'link' => 'barangmasuk',
+            'id_barangmasuk' => $this->M_barangmasuk->id_barangmasuk(),
+            'supplier'=> $this->M_barangmasuk->list_supplier()
+        );
+        $this->load->view('template/wrapper-admin', $data);
+	}
 }

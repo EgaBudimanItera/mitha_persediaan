@@ -22,11 +22,15 @@ class M_barangmasuk extends CI_Model {
          return $query;  
     }
 
+    function list_supplier(){
+        return $this->db->get('supplier');
+    }
+
     function id_barangmasuk(){
     	//BMmmYY  000001
     	$this->db->select('Right(brmkId,6) as kode',false);
     	
-    	$this->db->order_by('brmkId','asc');
+    	$this->db->order_by('brmkId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('barangmasuk');
 

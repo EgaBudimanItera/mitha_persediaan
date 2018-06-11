@@ -21,7 +21,7 @@
                 <i class="fa fa-perusahaan"></i>
                 <span class="grid-title">
                   <h6>
-                  <a href="<?=base_url()?>c_barangmasuk/formtambah">
+                  <a href="<?=base_url()?>c_barang_masuk/formtambah">
                     <button type="button" class="btn btn-primary btn-sm">
                       <i class="fa fa-plus"></i> Tambahkan Barang Masuk
                     </button>
