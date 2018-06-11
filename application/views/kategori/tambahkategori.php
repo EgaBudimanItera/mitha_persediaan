@@ -1,6 +1,5 @@
 
-    <!-- BEGIN CONTENT -->
-    <aside class="right-side">
+
       <!-- BEGIN CONTENT HEADER -->
       <section class="content-header">
         <h2> 
@@ -68,5 +67,4 @@
        
       </section>
       <!-- END MAIN CONTENT -->
-    </aside>
-    <!-- END CONTENT -->
+   
