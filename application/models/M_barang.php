@@ -23,6 +23,16 @@ class M_barang extends CI_Model {
          return $query = $this->db->get('barang')->result();  
     }
 
+    function list_barang_join_kategori(){
+      $this->db->from('barang');
+      $this->db->join('kategori', 'kategori.ktgrId=barang.brngKtgrId', 'left');
+      return $this->db->get()->result();
+    }
+
+    function list_kategori(){
+         return $query = $this->db->get('kategori')->result();  
+    }
+
     function ambil_barang($param_id, $id){
        return $this->db->get_where('barang', array($param_id => $id));
     }
@@ -73,7 +83,7 @@ class M_barang extends CI_Model {
     	//K002
     	$this->db->select('Right(brngId,5) as kode',false);
     	
-    	$this->db->order_by('brngId','asc');
+    	$this->db->order_by('brngId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('barang');
 

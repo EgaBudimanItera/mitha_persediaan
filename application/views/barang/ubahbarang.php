@@ -4,7 +4,7 @@
       <!-- BEGIN CONTENT HEADER -->
       <section class="content-header">
         <i class="fa fa-file-text-o"></i>
-        <span>Tambah Data Barang</span>
+        <span>Ubah Data Barang</span>
       </section>
       <!-- END CONTENT HEADER -->
       
@@ -28,11 +28,11 @@
                 </div>
               </div>
               <div class="grid-body">
-                <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang/tambahbarang" method="post">
+                <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang/ubahbarang" method="post">
                    <div class="form-group">
                     <label class="col-sm-2 control-label">Kode Barang</label>
                     <div class="col-sm-3">
-                      <input name="brngId" type="text" class="form-control" readonly value="<?=$idbarang?>" required>
+                      <input name="brngId" type="text" class="form-control" readonly value="<?=$list->brngId?>" required>
                       <!-- <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
                         <input type="text" class="form-control" name="daritanggal">
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
@@ -46,7 +46,7 @@
                       <select class="form-control" name="brngKtgrId" required>
                         <option value="">--pilih--</option>
                         <?php foreach($kategori as $data_kategori){?>
-                        <option value="<?=$data_kategori->ktgrId?>"><?=$data_kategori->ktgrId?> - <?=$data_kategori->ktgrNama?></option>
+                        <option value="<?=$data_kategori->ktgrId?>" <?=$data_kategori->ktgrId == $list->brngKtgrId ? 'selected' : ''?>><?=$data_kategori->ktgrId?> - <?=$data_kategori->ktgrNama?></option>
                         <?php }?>
                       </select>
                       <!-- <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
@@ -59,25 +59,25 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Nama Barang</label>
                     <div class="col-sm-3">
-                      <input name="brngNama" type="text" class="form-control" required>
+                      <input name="brngNama" type="text" class="form-control" value="<?=$list->brngNama?>" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Keterangan Barang</label>
                     <div class="col-sm-3">
-                      <textarea name="brngKet" class="form-control" required></textarea>
+                      <textarea name="brngKet" class="form-control" required><?=$list->brngKet?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Harga Barang</label>
                     <div class="col-sm-3">
-                      <input name="brngHarga" type="number" class="form-control" required>
+                      <input name="brngHarga" type="number" class="form-control" value="<?=$list->brngHarga?>" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Jumlah Barang</label>
                     <div class="col-sm-3">
-                      <input name="brngJumlah" type="number" class="form-control" required>
+                      <input name="brngJumlah" type="number" class="form-control" value="<?=$list->brngJumlah?>" required>
                     </div>
                   </div>
                   <div class="form-group">
