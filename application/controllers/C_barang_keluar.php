@@ -46,10 +46,10 @@ class C_barang_keluar extends CI_Controller {
 				'dbrkJumlah' => $this->input->post('jmlBarangDetail', true)[$i],
 				'dbrkHarga' => $this->input->post('hargaBarangDetail', true)[$i],
 			);
-			$this->M_barangkeluardetail->simpan_barangkeluardetail($dataDetailBarangMasuk[$i]);
+			// $this->M_barangkeluardetail->simpan_barangkeluardetail($dataDetailBarangMasuk[$i]);
 		}
          
-         // $simpan = $this->M_barangkeluardetail->simpan_barangkeluardetail_batch($dataDetailBarangMasuk);
+         $simpan = $this->M_barangkeluardetail->simpan_barangkeluardetail_batch($dataDetailBarangMasuk);
          if($simpankategori){
             $this->session->set_flashdata(
                 'msg', 

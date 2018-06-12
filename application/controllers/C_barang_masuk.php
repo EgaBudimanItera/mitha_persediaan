@@ -61,19 +61,23 @@ class C_barang_masuk extends CI_Controller {
 				'dbmkHarga' => $this->input->post('hargaBarangDetail', true)[$i],
 			);
 		}
-         $simpankategori = $this->M_barangmasuk->simpan_barangmasuk($data);
-         $simpan = $this->M_barangmasukdetail->simpan_barangmasukdetail_batch($dataDetailBarangMasuk);
-         if($simpankategori){
-            $this->session->set_flashdata(
-                'msg', 
-                '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
-            );
-            redirect(base_url().'c_barang_masuk'); //location
-         }else{
-           $this->session->set_flashdata(
+		$this->db->trans_begin();
+		$this->db->insert('barangmasuk', $data);
+		$this->db->insert_batch('barangmasukdetail', $dataDetailBarangMasuk);
+         if($this->db->trans_status() === FALSE){
+         	$this->db->trans_rollback();
+         	$this->session->set_flashdata(
                 'msg', 
                 '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Peringatan!</strong> Data gagal disimpan !</div>'
             );
+            redirect(base_url().'c_barang_masuk'); //location
+         }else{
+         	$this->db->trans_commit();
+           	$this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
+            );
+            
          }
 	}
 
