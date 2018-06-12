@@ -71,4 +71,5 @@ BEGIN
 	
 	update barang set brngJumlah=stok_akhir where brngId=new.dretBrngId;
 	
+	
     END
