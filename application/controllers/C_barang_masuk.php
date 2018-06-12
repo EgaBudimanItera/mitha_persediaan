@@ -47,12 +47,15 @@ class C_barang_masuk extends CI_Controller {
 	}
 
 	public function tambahbarang(){
+		$this->db->trans_begin();
 		$data = array(
             'brmkId' => $this->input->post('brngId', true),
             'brmkSuplId' => $this->input->post('brngKtgrId', true),
             'brmkTanggal' => $this->input->post('tanggalbarangmasuk', true)
-         );
+        );
+        $datahistorystok = array();
 		$dataDetailBarangMasuk = array();
+		$dataupdatebarang = array();
 		for($i=0;$i<count($this->input->post('idBarangDetail', true));$i++){
 			$dataDetailBarangMasuk[] = array(
 				'dbmkBrmkId' => $this->input->post('brngId', true),
@@ -60,25 +63,56 @@ class C_barang_masuk extends CI_Controller {
 				'dbmkJumlah' => $this->input->post('jmlBarangDetail', true)[$i],
 				'dbmkHarga' => $this->input->post('hargaBarangDetail', true)[$i],
 			);
-		}
-		$this->db->trans_begin();
+
+			$barang = $this->db->get_where('barang', array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+			$harga_awal = $barang->row()->brngHarga;
+			$stok_awal = $barang->row()->brngJumlah;
+
+			$harga_insert = $this->input->post('hargaBarangDetail', true)[$i];
+			$stok_insert = $this->input->post('jmlBarangDetail', true)[$i];
+
+			$stok_akhir = $stok_awal + $stok_insert;
+			$harga_akhir = (($harga_awal*$stok_awal) + ($harga_insert*$stok_insert))/$stok_akhir;
+
+			$datahistorystok[] = array(
+				'histTanggal' => date('Y-m-d'),
+				'histStatus' => 'Barang Masuk',
+				'histTranId' => $this->input->post('brngId', true),
+				'histBrngId' => $this->input->post('idBarangDetail', true)[$i],
+				'histStokMasuk' => $stok_insert,
+				'histHargaMasuk' => $harga_insert,
+				'histTotalMasuk' => $stok_insert * $harga_insert,
+				'histStokSaldo' => $stok_akhir,
+				'histHargaSaldo' => $harga_akhir,
+				'histTotalSaldo' => $stok_akhir * $harga_akhir
+			);
+
+			$dataupdatebarang[] = array(
+				'brngHarga' => $harga_akhir,
+				'brngJumlah' => $stok_akhir
+			);
+			$this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+		}		
+
+		
 		$this->db->insert('barangmasuk', $data);
 		$this->db->insert_batch('barangmasukdetail', $dataDetailBarangMasuk);
-         if($this->db->trans_status() === FALSE){
+		$this->db->insert_batch('historistok', $datahistorystok);
+        if($this->db->trans_status() === FALSE){
          	$this->db->trans_rollback();
          	$this->session->set_flashdata(
                 'msg', 
                 '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Peringatan!</strong> Data gagal disimpan !</div>'
             );
             redirect(base_url().'c_barang_masuk'); //location
-         }else{
+        }else{
          	$this->db->trans_commit();
            	$this->session->set_flashdata(
                 'msg', 
                 '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
             );
-            
-         }
+            redirect(base_url().'c_barang_masuk'); //location
+        }
 	}
 
 	public function hapusdetailbarang(){

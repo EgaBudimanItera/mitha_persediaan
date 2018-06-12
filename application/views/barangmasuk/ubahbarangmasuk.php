@@ -5,7 +5,7 @@
       <section class="content-header">
         <h2>
           <i class="fa fa-file-text-o"></i>
-          <span>Ubah Data Barang</span>
+          <span>Detail Data Barang Masuk</span>
         </h2>
       </section>
       <!-- END CONTENT HEADER -->
@@ -32,7 +32,8 @@
                 </div>
               </div>
               <div class="grid-body">
-                <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang_masuk/ubahbarang" method="post">
+                <!-- <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang_masuk/ubahbarang" method="post"> -->
+                <form action="#"  class="form-horizontal">
                    <div class="form-group">
                     <label class="col-sm-3 control-label">Kode Barang Masuk</label>
                     <div class="col-sm-9">
@@ -47,7 +48,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">Supplier Barang</label>
                     <div class="col-sm-9">
-                      <select class="form-control" name="brngKtgrId" required>
+                      <select class="form-control" name="brngKtgrId" required disabled>
                         <option value="">--pilih--</option>
                         <?php foreach($supplier->result() as $data_supplier){?>
                         <option value="<?=$data_supplier->spliId?>" <?=$data_barang_masuk->brmkSuplId == $data_supplier->spliId ? 'selected' : ''?>><?=$data_supplier->spliId?> - <?=$data_supplier->spliNama?></option>
@@ -64,22 +65,22 @@
                     <label class="col-sm-3 control-label">Tanggal Barang Masuk</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="text" class="form-control" name="tanggalbarangmasuk" value="<?=$data_barang_masuk->brmkTanggal?>" required>
+                        <input type="text" class="form-control" name="tanggalbarangmasuk" value="<?=$data_barang_masuk->brmkTanggal?>" disabled required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />
                     </div>
                   </div>
                   
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-9">
                       <button type="submit" class="btn btn-primary">Simpan</button>
-                      <!-- <button type="reset" class="btn btn-default">Bersih</button> -->
+                       <button type="reset" class="btn btn-default">Bersih</button> 
                       <a href="#" class="tambahbarangmasukdetail btn btn-danger" >Tambah Detail Barang</a>
                     </div>
-                  </div>
+                  </div> -->
                 <hr/>
                 <div class="hideBarangMasuk" style="display: none;">
                     <div class="form-group">
@@ -122,8 +123,8 @@
                     <tr>
                       <th>Nama Barang</th>
                       <th>Jumlah Barang</th>
-                      <th>Harga Barang</th>
-                      <th>Aksi</th>
+                      <th>Harga Barang</th><!-- 
+                      <th>Aksi</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -131,11 +132,11 @@
                     <tr>
                       
                       <td><?=$rowbrgmskdetail->dbmkBrngId.' - '.$rowbrgmskdetail->brngNama?></td>
-                      <td><input type="hidden" name="idbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkId?>"><input type="text" name="jmlbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkJumlah?>"></td>
-                      <td><input type="text" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkHarga?>"></td>
-                      <td>
+                      <td><?=$rowbrgmskdetail->dbmkJumlah?><input type="hidden" name="idbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkId?>"><input type="hidden" name="jmlbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkJumlah?>"></td>
+                      <td><?=$rowbrgmskdetail->dbmkHarga?><input type="hidden" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkHarga?>"></td>
+                      <!-- <td>
                         <a href="<?=base_url()?>c_barang_masuk/hapusdetailbarang/<?=$rowbrgmskdetail->dbmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')" class="btn btn-danger btn-xs">Hapus</a>
-                      </td>
+                      </td> -->
                     </tr>
                     <?php }?>
                   </tbody>

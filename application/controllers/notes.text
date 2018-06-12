@@ -1,0 +1,48 @@
+//histori stok barang masuk
+BEGIN
+	declare harga_awal DOUBLE;
+	declare harga_akhir DOUBLE;
+	DECLARE harga_masuk DOUBLE;
+	DECLARE stok_awal int;
+	DECLARE stok_akhir int;
+	declare stok_masuk int;
+	
+	set harga_awal=(select brngHarga from barang where brngId=new.dbmkBrngId);
+	set stok_awal =(select brngJumlah from barang where brngId=new.dbmkBrngId);
+	set harga_masuk=new.dbmkHarga;
+	set stok_masuk=new.dbmkJumlah;
+	set stok_akhir=stok_awal+stok_masuk;
+	set harga_akhir=((harga_awal*stok_awal)+(harga_masuk*stok_masuk))/stok_akhir;
+	
+	insert into historistok() values(
+		default,now(),'Barang Masuk',new.dbmkBrmkId,new.dbmkBrngId,stok_masuk,harga_masuk,(stok_masuk*harga_masuk),0,0,0,0,0,stok_akhir,harga_akhir,(stok_akhir*harga_akhir));
+	update barang set brngHarga=harga_akhir , brngJumlah=stok_akhir where brngId=new.dbmkBrngId;
+
+	
+    END
+
+
+//histori stok barang keluar
+BEGIN
+	declare harga_awal DOUBLE;
+	DECLARE stok_awal int;
+	
+	declare stok_keluar int;
+	declare harga_keluar DOUBLE;
+	declare harga_akhir DOUBLE;
+	DECLARE stok_akhir int;
+	
+	
+	set harga_awal=(select brngHarga from barang where brngId=new.dbrkBrngId);
+	set stok_awal =(select brngJumlah from barang where brngId=new.dbrkBrngId);
+	set stok_keluar=new.dbrkJumlah;
+	set harga_keluar=new.dbrkHarga;
+	set stok_akhir=stok_awal-stok_keluar;
+	set harga_akhir=stok_akhir*harga_awal;
+	
+	insert into historistok() values(
+		default,now(),'Barang Keluar',new.dbrkBrklId,new.dbrkBrngId,0,0,0,stok_keluar,harga_awal,(stok_keluar*harga_awal),harga_keluar,(harga_keluar*stok_keluar),
+		stok_akhir,harga_awal,(stok_akhir*harga_awal));
+	update barang set brngJumlah=stok_akhir where brngId=new.dbrkBrngId;
+	
+    END
