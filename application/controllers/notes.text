@@ -46,3 +46,29 @@ BEGIN
 	update barang set brngJumlah=stok_akhir where brngId=new.dbrkBrngId;
 	
     END
+
+//hostori retur barang 
+BEGIN
+	declare harga_awal DOUBLE;
+	DECLARE stok_awal int;
+	
+	declare stok_retur int;
+	declare harga_retur DOUBLE;
+	declare harga_akhir DOUBLE;
+	DECLARE stok_akhir int;
+	
+	
+	set harga_awal=(select brngHarga from barang where brngId=new.dretBrngId);
+	set stok_awal =(select brngJumlah from barang where brngId=new.dretBrngId);
+	set stok_retur=new.dretJumlah*-1;
+	set harga_retur=new.dretHarga;
+	set stok_akhir=stok_awal+stok_retur;
+	set harga_akhir=((harga_awal*stok_awal)+(harga_retur*stok_retur))/stok_akhir;
+	
+	insert into historistok() values(
+		default,now(),'Retur',new.dretRetuId,new.dretBrngId,stok_retur,harga_retur,(stok_retur*harga_retur),0,0,0,0,0,stok_akhir,harga_akhir,(stok_akhir*harga_akhir));
+	update barang set brngHarga=harga_akhir where brngId=new.dretBrngId;
+	
+	update barang set brngJumlah=stok_akhir where brngId=new.dretBrngId;
+	
+    END

@@ -62,12 +62,12 @@
                       <td><?=$l->brklPelanggan?></td>
                       <td><?=$l->brklAlamat?></td>
                       <td>
-                        <a href="<?=base_url()?>c_barang_masuk/formubah/<?=$l->brklId?>">
+                        <a href="<?=base_url()?>c_barang_keluar/formubah/<?=$l->brklId?>">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-edit"></i>
                           </button>
                         </a>
-                        <a href="<?=base_url()?>c_barang_masuk/hapus_barangmasuk_dan_detail/<?=$l->brklId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
+                        <a href="<?=base_url()?>c_barang_keluar/hapus_barangkeluar_dan_detail/<?=$l->brklId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>
