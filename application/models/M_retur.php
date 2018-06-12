@@ -17,6 +17,13 @@ class M_retur extends CI_Model {
        return $this->db->get_where('retur', array($param_id => $id));
     }
 
+    function list_retur(){
+        $this->db->from('retur');
+        $this->db->join('barangmasuk', 'barangmasuk.brmkId = retur.retuBrmkId');
+        $this->db->join('supplier', 'barangmasuk.brmkSuplId = supplier.spliId');
+        return $this->db->get();
+    }
+
     function id_retur(){
     	//BMmmYY  000001
     	$this->db->select('Right(retuId,6) as kode',false);

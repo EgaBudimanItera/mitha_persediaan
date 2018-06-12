@@ -48,7 +48,7 @@
 						</a>
 					</li>
 					<li class="<?php if($link=='retur'){echo'active';}?>">
-						<a href="#">
+						<a href="<?=base_url()?>c_retur">
 							<i class="fa fa-reorder"></i><span>Data Retur</span>	
 						</a>
 					</li>
