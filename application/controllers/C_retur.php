@@ -17,4 +17,86 @@ class C_retur extends CI_Controller {
         );
         $this->load->view('template/wrapper-admin', $data);
     }
+
+    public function formtambah(){
+        $data = array(
+            'page' => 'retur/tambahretur',
+            'link' => 'retur',
+            'id_retur' => $this->M_retur->id_retur(),
+            'list_barang_masuk' => $this->M_retur->list_barang_masuk(),
+            // 'supplier'=> $this->M_retur->list_supplier(),
+            'barang' => $this->M_retur->list_barang(),
+            'script' => 'script/retur'
+        );
+        $this->load->view('template/wrapper-admin', $data);
+    }
+
+    public function tambahbarang(){
+        $this->db->trans_begin();
+        $data = array(
+            'retuId' => $this->input->post('brngId', true),
+            'retuBrmkId' => $this->input->post('kodebarangmasuk', true),
+            'retuTanggal' => $this->input->post('tanggalretur', true)
+        );
+        $datahistorystok = array();
+        $dataDetailBarangMasuk = array();
+        $dataupdatebarang = array();
+        for($i=0;$i<count($this->input->post('idBarangDetail', true));$i++){
+            $dataDetailBarangMasuk[] = array(
+                'dretRetuId' => $this->input->post('brngId', true),
+                'dretBrngId' => $this->input->post('idBarangDetail', true)[$i],
+                'dretJumlah' => $this->input->post('jmlBarangDetail', true)[$i],
+                'dretHarga' => $this->input->post('hargaBarangDetail', true)[$i],
+            );
+
+            $barang = $this->db->get_where('barang', array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+            $harga_awal = $barang->row()->brngHarga;
+            $stok_awal = $barang->row()->brngJumlah;
+
+            $harga_retur = $this->input->post('hargaBarangDetail', true)[$i];
+            $stok_retur = $this->input->post('jmlBarangDetail', true)[$i] * -1;
+
+            $stok_akhir = $stok_awal + $stok_retur;
+            $harga_akhir = (($harga_awal*$stok_awal) + ($harga_retur*$stok_retur))/$stok_akhir;
+
+            $datahistorystok[] = array(
+                'histTanggal' => date('Y-m-d'),
+                'histStatus' => 'Retur',
+                'histTranId' => $this->input->post('brngId', true),
+                'histBrngId' => $this->input->post('idBarangDetail', true)[$i],
+                'histStokMasuk' => $stok_retur,
+                'histHargaMasuk' => $harga_retur,
+                'histTotalMasuk' => $stok_retur * $harga_retur,
+                'histStokSaldo' => $stok_akhir,
+                'histHargaSaldo' => $harga_akhir,
+                'histTotalSaldo' => $stok_akhir * $harga_akhir
+            );
+
+            $dataupdatebarang[] = array(
+                'brngHarga' => $harga_akhir,
+                'brngJumlah' => $stok_akhir
+            );
+            $this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+        }       
+
+        
+        $this->db->insert('retur', $data);
+        $this->db->insert_batch('returdetail', $dataDetailBarangMasuk);
+        $this->db->insert_batch('historistok', $datahistorystok);
+        if($this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Peringatan!</strong> Data gagal disimpan !</div>'
+            );
+            redirect(base_url().'c_retur'); //location
+        }else{
+            $this->db->trans_commit();
+            $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
+            );
+            redirect(base_url().'c_retur'); //location
+        }
+    }
 }

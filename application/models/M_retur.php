@@ -24,11 +24,21 @@ class M_retur extends CI_Model {
         return $this->db->get();
     }
 
+    function list_barang_masuk(){
+        $this->db->from('barangmasuk');
+        $this->db->join('supplier', 'barangmasuk.brmkSuplId = supplier.spliId');
+        return $this->db->get();
+    }
+
+    function list_barang(){
+        return $this->db->get('barang');
+    }
+
     function id_retur(){
     	//BMmmYY  000001
     	$this->db->select('Right(retuId,6) as kode',false);
     	
-    	$this->db->order_by('retuId','asc');
+    	$this->db->order_by('retuId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('retur');
 
