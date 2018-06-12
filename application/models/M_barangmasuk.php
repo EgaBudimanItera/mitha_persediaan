@@ -8,6 +8,12 @@ class M_barangmasuk extends CI_Model {
         return true;
     }
 
+    function ubah_barangmasuk($param_id, $id, $data){       
+        $this->db->where($param_id, $id);
+        $this->db->update('barangmasuk', $data); 
+        return true;
+    }
+
     function hapus_barangmasuk($param_id, $id){
         $this->db->delete('barangmasuk', array($param_id => $id)); 
         return true;

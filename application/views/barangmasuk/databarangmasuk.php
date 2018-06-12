@@ -62,12 +62,12 @@
                       <td><?=$l->spliNama?></td>
                       <td>Rp. <?=number_format($l->total, 0, ',', '.')?></td>
                       <td>
-                        <a href="<?=base_url()?>c_barang/formubah/<?=$l->dbmkBrmkId?>">
+                        <a href="<?=base_url()?>c_barang_masuk/formubah/<?=$l->dbmkBrmkId?>">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-edit"></i>
                           </button>
                         </a>
-                        <a href="<?=base_url()?>c_barang/hapuskategori/<?=$l->dbmkBrmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
+                        <a href="<?=base_url()?>c_barang_masuk/hapus_barangmasuk_dan_detail/<?=$l->dbmkBrmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>
