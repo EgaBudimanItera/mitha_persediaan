@@ -120,4 +120,19 @@ class C_retur extends CI_Controller {
             );
         }
     }
+
+    public function formubah(){
+        $brngMskId =$this->uri->segment(3);
+        $data = array(
+            'page' => 'retur/ubahretur',
+            'link' => 'retur',
+            'list_barang_masuk' => $this->M_retur->list_barang_masuk(),
+            'barang' => $this->M_retur->list_barang(),
+            'data_retur' => $this->M_retur->ambil_retur('retuId', $brngMskId)->row(),
+            'data_retur_detail' => $this->M_returdetail->ambil_barangmasuk_detail('dretRetuId', $brngMskId),
+            // 'script' => 'script/ubahbarangkeluar'
+
+        );
+        $this->load->view('template/wrapper-admin', $data);
+    }
 }

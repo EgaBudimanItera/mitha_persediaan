@@ -126,7 +126,7 @@
                       <td><?=$no++?>.</td>
                       <td><?=$rowbrgmskdetail->dbrkBrngId.' - '.$rowbrgmskdetail->brngNama?></td>
                       <td><?=$rowbrgmskdetail->dbrkJumlah?><input type="hidden" name="idbrgdetaile[]" value="<?=$rowbrgmskdetail->dbrkId?>"><input type="hidden" name="jmlbrgdetaile[]" value="<?=$rowbrgmskdetail->dbrkJumlah?>"></td>
-                      <td><?=$rowbrgmskdetail->dbrkHarga?><input type="hidden" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dbrkHarga?>"></td>
+                      <td>Rp. <?=number_format($rowbrgmskdetail->dbrkHarga, 0, ',', '.')?><input type="hidden" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dbrkHarga?>"></td>
                       <!-- <td>
                         <a href="<?=base_url()?>c_barang_masuk/hapusdetailbarang/<?=$rowbrgmskdetail->dbmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')" class="btn btn-danger btn-xs">Hapus</a>
                       </td> -->

@@ -5,7 +5,7 @@
       <section class="content-header">
         <h2>
           <i class="fa fa-file-text-o"></i>
-          <span>Detail Data Barang Masuk</span>
+          <span>Detail Data Retur</span>
         </h2>
       </section>
       <!-- END CONTENT HEADER -->
@@ -32,12 +32,11 @@
                 </div>
               </div>
               <div class="grid-body">
-                <!-- <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang_masuk/ubahbarang" method="post"> -->
-                <form action="#"  class="form-horizontal">
+                <form class="form-horizontal" role="form" action="<?=base_url()?>c_retur/tambahbarang" method="post">
                    <div class="form-group">
-                    <label class="col-sm-3 control-label">Kode Barang Masuk</label>
+                    <label class="col-sm-3 control-label">Kode Retur</label>
                     <div class="col-sm-9">
-                      <input name="brngId" type="text" class="form-control" readonly value="<?=$data_barang_masuk->brmkId?>" required>
+                      <input name="brngId" type="text" class="form-control" readonly value="<?=$data_retur->retuId?>" required>
                       <!-- <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
                         <input type="text" class="form-control" name="daritanggal">
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
@@ -46,29 +45,25 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">Supplier Barang</label>
-                    <div class="col-sm-9">
-                      <select class="form-control" name="brngKtgrId" required disabled>
-                        <option value="">--pilih--</option>
-                        <?php foreach($supplier->result() as $data_supplier){?>
-                        <option value="<?=$data_supplier->spliId?>" <?=$data_barang_masuk->brmkSuplId == $data_supplier->spliId ? 'selected' : ''?>><?=$data_supplier->spliId?> - <?=$data_supplier->spliNama?></option>
-                        <?php }?>
-                      </select>
-                      <!-- <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="text" class="form-control" name="hinggatanggal">
-                        <span class="input-group-addon"><i class="fa fa-th"></i></span>
-                      </div>
-                      <input type="hidden" id="dtp_input" value="" /> -->
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label">Tanggal Barang Masuk</label>
+                    <label class="col-sm-3 control-label">Tanggal Retur</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="text" class="form-control" name="tanggalbarangmasuk" value="<?=$data_barang_masuk->brmkTanggal?>" disabled required>
+                        <input type="text" class="form-control" name="tanggalretur" required value="<?=$data_retur->retuTanggal?>" disabled>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Kode Barang Masuk</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="kodebarangmasuk" disabled required>
+                        <option value="">--pilih--</option>
+                        <?php foreach($list_barang_masuk->result() as $rowbarangmasuk){?>
+                          <option value="<?=$rowbarangmasuk->brmkId?>" <?=$rowbarangmasuk->brmkId == $data_retur->retuBrmkId ? 'selected' : ''?>><?=$rowbarangmasuk->brmkId?> - <?=$rowbarangmasuk->spliNama?></option>
+                        <?php }?>
+                      </select>
                     </div>
                   </div>
                   
@@ -77,7 +72,7 @@
                     </div>
                     <div class="col-md-9">
                       <button type="submit" class="btn btn-primary">Simpan</button>
-                       <button type="reset" class="btn btn-default">Bersih</button> 
+                      <button type="reset" class="btn btn-default">Bersih</button>
                       <a href="#" class="tambahbarangmasukdetail btn btn-danger" >Tambah Detail Barang</a>
                     </div>
                   </div> -->
@@ -86,7 +81,7 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Nama Barang</label>
                       <div class="col-sm-9">
-                        <select name="barang" id="barang" class="form-control">
+                        <select name="barang" id="barang" class="form-control" required>
                           <option value="">--pilih--</option>
                           <?php foreach($barang->result() as $data_barang){?>
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>
@@ -115,12 +110,10 @@
                     
                   
                 </div>
-                <div id="info-alert">
-                  <?=@$this->session->flashdata('msg')?>
-                </div>  
                 <table id="tbDetailBarang"  class="data-table table table-bordered table-striped" cellspacing="0" width="100%">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Barang</th>
                       <th>Jumlah Barang</th>
                       <th>Harga Barang</th><!-- 
@@ -128,12 +121,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $no =1; foreach($data_barang_masuk_detail->result() as $rowbrgmskdetail){?>
+                    <?php $no =1; foreach($data_retur_detail->result() as $rowbrgmskdetail){?>
                     <tr>
-                      
-                      <td><?=$rowbrgmskdetail->dbmkBrngId.' - '.$rowbrgmskdetail->brngNama?></td>
-                      <td><?=$rowbrgmskdetail->dbmkJumlah?><input type="hidden" name="idbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkId?>"><input type="hidden" name="jmlbrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkJumlah?>"></td>
-                      <td>Rp. <?=number_format($rowbrgmskdetail->dbmkHarga, 0, ',', '.')?><input type="hidden" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dbmkHarga?>"></td>
+                      <td><?=$no++?>.</td>
+                      <td><?=$rowbrgmskdetail->dretBrngId.' - '.$rowbrgmskdetail->brngNama?></td>
+                      <td><?=$rowbrgmskdetail->dretJumlah?><input type="hidden" name="idbrgdetaile[]" value="<?=$rowbrgmskdetail->dretRetuId?>"><input type="hidden" name="jmlbrgdetaile[]" value="<?=$rowbrgmskdetail->dretJumlah?>"></td>
+                      <td>Rp. <?=number_format($rowbrgmskdetail->dretHarga, 0, ',', '.')?><input type="hidden" name="hargabrgdetaile[]" value="<?=$rowbrgmskdetail->dretHarga?>"></td>
                       <!-- <td>
                         <a href="<?=base_url()?>c_barang_masuk/hapusdetailbarang/<?=$rowbrgmskdetail->dbmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')" class="btn btn-danger btn-xs">Hapus</a>
                       </td> -->
