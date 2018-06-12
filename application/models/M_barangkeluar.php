@@ -17,11 +17,19 @@ class M_barangkeluar extends CI_Model {
        return $this->db->get_where('barangkeluar', array($param_id => $id));
     }
 
+    function lits_barangkeluar(){
+        return $this->db->get('barangkeluar');
+    }
+
+    function list_barang(){
+        return $this->db->get('barang');
+    }
+
     function id_barangkeluar(){
     	//BMmmYY  000001
     	$this->db->select('Right(brklId,6) as kode',false);
     	
-    	$this->db->order_by('brklId','asc');
+    	$this->db->order_by('brklId','DESC');
     	$this->db->limit(1);
     	$query = $this->db->get('barangkeluar');
 
