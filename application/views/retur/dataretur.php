@@ -67,7 +67,7 @@
                             <i class="fa fa-edit"></i>
                           </button>
                         </a>
-                        <a href="<?=base_url()?>c_retur/hapus_barangmasuk_dan_detail/<?=$l->retuId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
+                        <a href="<?=base_url()?>c_retur/hapus_retur_dan_detail/<?=$l->retuId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>

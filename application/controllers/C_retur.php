@@ -7,6 +7,7 @@ class C_retur extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('M_retur');
+        $this->load->model('M_returdetail');
 	}
 
     public function index(){
@@ -97,6 +98,26 @@ class C_retur extends CI_Controller {
                 '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
             );
             redirect(base_url().'c_retur'); //location
+        }
+    }
+
+    public function hapus_retur_dan_detail(){
+        $brngId =$this->uri->segment(3);
+            
+        $row = $this->M_returdetail->ambil_retur_detail('dretRetuId',$brngId);
+        $hapusbarangmasuk = $this->M_retur->hapus_retur('retuId', $brngId);
+        $hapusbarangmasukdetail = $this->M_returdetail->hapus_retur_detail('dretRetuId',$brngId);
+        if($hapusbarangmasuk){
+            $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil dihapus !</div>'
+            );
+            redirect(base_url().'c_retur'); //location
+        }else{
+            $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Peringatan!</strong> Data gagal dihapus !</div>'
+            );
         }
     }
 }
