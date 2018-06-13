@@ -53,7 +53,7 @@
 						</a>
 					</li>
 					<li class="<?php if($link=='histori'){echo'active';}?>">
-						<a href="#">
+						<a href="<?=base_url()?>c_histori">
 							<i class="fa fa-folder"></i><span>Histori Barang</span>	
 						</a>
 					</li>
