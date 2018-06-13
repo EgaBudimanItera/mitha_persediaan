@@ -81,7 +81,7 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Nama Barang</label>
                       <div class="col-sm-9">
-                        <select name="barang" id="barang" class="form-control" required>
+                        <select name="barang" id="barang" class="form-control selectpicker" data-live-search="true" required>
                           <option value="">--pilih--</option>
                           <?php foreach($barang->result() as $data_barang){?>
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>

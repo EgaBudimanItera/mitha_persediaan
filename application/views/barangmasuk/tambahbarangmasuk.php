@@ -47,7 +47,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">Supplier Barang</label>
                     <div class="col-sm-9">
-                      <select class="form-control" name="brngKtgrId" required>
+                      <select class="form-control selectpicker" data-live-search="true"  name="brngKtgrId" required>
                         <option value="">--pilih--</option>
                         <?php foreach($supplier->result() as $data_supplier){?>
                         <option value="<?=$data_supplier->spliId?>"><?=$data_supplier->spliId?> - <?=$data_supplier->spliNama?></option>
@@ -85,7 +85,7 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Nama Barang</label>
                       <div class="col-sm-9">
-                        <select name="barang" id="barang" class="form-control" required>
+                        <select name="barang" id="barang" class="form-control selectpicker" data-live-search="true" required>
                           <option value="">--pilih--</option>
                           <?php foreach($barang->result() as $data_barang){?>
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>

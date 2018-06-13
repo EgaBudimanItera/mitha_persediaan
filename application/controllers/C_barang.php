@@ -24,6 +24,7 @@ class C_barang extends CI_Controller {
             'link' => 'barang',
             'kategori' => $this->M_barang->list_kategori(),
             'idbarang' => $this->M_barang->id_barang(),
+            'script' => 'script/barang'
         );
         $this->load->view('template/wrapper-admin', $data);   
     }
@@ -35,6 +36,7 @@ class C_barang extends CI_Controller {
             'link' => 'barang',
             'list' => $this->M_barang->ambil_barang('brngId',$brngId)->row(),
             'kategori' => $this->M_barang->list_kategori(),
+            'script' => 'script/barang'
         );
         $this->load->view('template/wrapper-admin', $data);
     }

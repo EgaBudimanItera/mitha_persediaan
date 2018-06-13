@@ -43,7 +43,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Kategori Barang</label>
                     <div class="col-sm-3">
-                      <select class="form-control" name="brngKtgrId" required>
+                      <select class="form-control selectpicker" data-live-search="true" name="brngKtgrId" required>
                         <option value="">--pilih--</option>
                         <?php foreach($kategori as $data_kategori){?>
                         <option value="<?=$data_kategori->ktgrId?>"><?=$data_kategori->ktgrId?> - <?=$data_kategori->ktgrNama?></option>
