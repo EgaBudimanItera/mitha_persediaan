@@ -34,6 +34,10 @@ class M_retur extends CI_Model {
         return $this->db->get('barang');
     }
 
+    function list_barang_with_suplier(){
+        
+    }
+
     function id_retur(){
     	//BMmmYY  000001
     	$this->db->select('Right(retuId,6) as kode',false);
