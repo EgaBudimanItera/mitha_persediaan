@@ -58,7 +58,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">Kode Barang Masuk</label>
                     <div class="col-sm-9">
-                      <select class="form-control" name="kodebarangmasuk" required>
+                      <select class="form-control selectpicker" data-live-search="true" name="kodebarangmasuk" id="kodebarangmasuk" required>
                         <option value="">--pilih--</option>
                         <?php foreach($list_barang_masuk->result() as $rowbarangmasuk){?>
                           <option value="<?=$rowbarangmasuk->brmkId?>"><?=$rowbarangmasuk->brmkId?> - <?=$rowbarangmasuk->spliNama?></option>
@@ -83,9 +83,9 @@
                       <div class="col-sm-9">
                         <select name="barang" id="barang" class="form-control selectpicker" data-live-search="true" required>
                           <option value="">--pilih--</option>
-                          <?php foreach($barang->result() as $data_barang){?>
+                          <!-- <?php foreach($barang->result() as $data_barang){?>
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>
-                          <?php }?>
+                          <?php }?> -->
                         </select>
                       </div>
                     </div>

@@ -40,6 +40,28 @@
 			e.preventDefault();
 			$(this).parent().parent().remove();
 		});
+
+		$(document).on('change', '#kodebarangmasuk', function(e){
+			e.preventDefault();
+			var kodebarangmasuk = $(this).val();
+			
+			$.ajax({
+				url: '<?=base_url()?>c_retur/ambil_detail_barang_by_kodebarang',
+				type: 'POST', 
+				dataType: 'JSON',
+				data: 'kodebarangmasuk='+kodebarangmasuk,
+				success: function(JSONObject){
+					var hitung = "";
+					hitung += '<option value="">--pilih--</option>';
+					for (var key in JSONObject) {
+						if (JSONObject.hasOwnProperty(key)) {
+							hitung += "<option value='"+JSONObject[key]["brngId"]+"'>"+JSONObject[key]["brngId"]+" - "+JSONObject[key]["brngNama"]+"</option>";					
+						}
+					}
+					$("#barang").html(hitung).selectpicker('refresh');;
+                }                     
+			});	
+		});
 	});
 </script>
 <script src="<?=base_url()?>assets/bootstrap-select.min.js"></script>

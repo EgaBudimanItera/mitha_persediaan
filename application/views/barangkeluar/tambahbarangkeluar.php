@@ -87,12 +87,14 @@
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>
                           <?php }?>
                         </select>
+                        <span id="stokharga"></span>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Jumlah Barang</label>
                       <div class="col-sm-9">
                         <input type="number" name="jumlahBarang" id="jumlahBarang" class="form-control">
+
                       </div>
                     </div>
                     <div class="form-group">

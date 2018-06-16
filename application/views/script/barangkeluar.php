@@ -40,6 +40,20 @@
 			e.preventDefault();
 			$(this).parent().parent().remove();
 		});
+
+		$(document).on('change', '#barang', function(e){
+			e.preventDefault();
+			$('#stokharga').html('Loading...');
+			var id_barang = $('#barang').val();
+			$.ajax({
+				url: '<?=base_url()?>c_barang_keluar/get_stok_harga',
+				type: 'POST',
+				data: 'id_barang='+id_barang,
+				success: function(msg){
+					$('#stokharga').html(msg);
+				}
+			});
+		});
 	});
 </script>
 <script src="<?=base_url()?>assets/bootstrap-select.min.js"></script>

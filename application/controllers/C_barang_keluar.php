@@ -136,4 +136,10 @@ class C_barang_keluar extends CI_Controller {
         }
     }
 
+    public function get_stok_harga(){
+        $id_barangkeluar = $this->input->post('id_barang', true);
+        $row = $this->M_barangkeluardetail->ambil_detail_barang('brngId', $id_barangkeluar);
+        echo 'Stok: '.$row->row()->brngJumlah.' Harga: Rp.'. number_format($row->row()->brngHarga, 0, ',', '.');
+    }
+
 }

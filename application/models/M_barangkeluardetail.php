@@ -20,6 +20,10 @@ class M_barangkeluardetail extends CI_Model {
     	return $this->db->get();
     }
 
+    function ambil_detail_barang($param_id, $id){
+        return $this->db->get_where('barang', array($param_id=>$id));
+    }
+
     function hapus_barangkeluar_detail($param_id, $id){
         $this->db->delete('barangkeluardetail', array($param_id => $id)); 
         return true;

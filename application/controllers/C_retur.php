@@ -135,4 +135,14 @@ class C_retur extends CI_Controller {
         );
         $this->load->view('template/wrapper-admin', $data);
     }
+
+    public function ambil_detail_barang_by_kodebarang(){
+        $kodebarangmasuk = $this->input->post('kodebarangmasuk', true);
+        $this->db->from('barangmasukdetail');
+        $this->db->join('barang', 'barangmasukdetail.dbmkBrngId = barang.brngId');
+        $this->db->where(array('dbmkBrmkId'=>$kodebarangmasuk));
+        $this->db->order_by('dbmkBrngId', 'ASC');
+        $data = $this->db->get();
+        echo json_encode($data->result_array());
+    }
 }
