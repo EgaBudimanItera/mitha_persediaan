@@ -58,12 +58,12 @@
                       <td><?=$l->userNama?></td>
                       <td><?=$l->userHakakses?></td>
                       <td>
-                        <a href="<?=base_url()?>c_barang/formubah/<?=$l->userId?>">
+                        <a href="<?=base_url()?>c_user/formubah/<?=$l->userId?>">
                           <button type="button" class="btn btn-primary">
                             <i class="fa fa-edit"></i>
                           </button>
                         </a>
-                        <a href="<?=base_url()?>c_barang/hapuskategori/<?=$l->userId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
+                        <a href="<?=base_url()?>c_user/hapuskategori/<?=$l->userId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>
