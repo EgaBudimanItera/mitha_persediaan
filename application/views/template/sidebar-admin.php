@@ -57,6 +57,11 @@
 							<i class="fa fa-folder"></i><span>Histori Barang</span>	
 						</a>
 					</li>
+					<li class="<?php if($link=='user'){echo'active';}?>">
+						<a href="<?=base_url()?>c_user">
+							<i class="fa fa-user"></i><span>User</span>	
+						</a>
+					</li>
 				</ul>
 			</section>
 		</aside>
