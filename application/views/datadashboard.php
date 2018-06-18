@@ -38,6 +38,16 @@
                 <div id="info-alert">
                   <?=@$this->session->flashdata('msg')?>
                 </div>  
+                <center>
+                  <h3>Aplikasi Stok Barang</h3><hr/>
+                </center>
+                  <p>Aplikasi ini merupakan aplikasi stok barang, aplikasi ini mengelola:</p>
+                  <ol>
+                    <li>Data Barang Masuk</li>
+                    <li>Data Barang Keluar</li>
+                    <li>Data Barang Retur</li>
+                    <li>Data Stok Barang</li>
+                  </ol>
                 
               </div>
             </div>
