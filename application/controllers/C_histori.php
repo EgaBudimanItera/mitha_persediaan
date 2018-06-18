@@ -84,6 +84,7 @@ class C_histori extends CI_Controller {
 		$data = $this->db->get();
 	?>
 		<link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/css/bootstrap.min.css">
+		<center><h4>Kartu Stok Barang</h4></center><hr/>
 		<table class="table table-striped table-bordered">
 		    <tr>
 		        <td rowspan="2">No</td>

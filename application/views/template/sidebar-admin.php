@@ -7,8 +7,10 @@
 						<img src="<?=base_url()?>assets/front-end/images/logoola.png" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
-						<p><strong>username yang login</strong></p>
+						<?php if($this->session->userdata('status') == 'login'){?>
+						<p><strong><?=$this->session->userdata('userNama')?></strong></p>
 						<a href="#"><i class="fa fa-circle text-green"></i> Online</a>
+						<?php }else{ echo '<p>Dashboard</p>'; }?>
 					</div>
 				</div>
 				<form action="#" method="get" class="sidebar-form">
@@ -22,6 +24,7 @@
 							<i class="fa fa-home"></i><span>Dashboard</span>
 						</a>
 					</li>
+					<?php if($this->session->userdata('level') == 'pimpinan' || $this->session->userdata('level') == 'admin gudang'){ ?>
 					<li class="<?php if($link=='kategori'){echo'active';}?>">
 						<a href="<?=base_url()?>c_kategori">
 							<i class="fa fa-briefcase"></i><span>Data Kategori Barang</span>	
@@ -57,11 +60,14 @@
 							<i class="fa fa-folder"></i><span>Histori Barang</span>	
 						</a>
 					</li>
+					<?php }?>
+					<?php if($this->session->userdata('level') == 'pimpinan'){?>
 					<li class="<?php if($link=='user'){echo'active';}?>">
 						<a href="<?=base_url()?>c_user">
 							<i class="fa fa-user"></i><span>User</span>	
 						</a>
 					</li>
+					<?php }?>
 				</ul>
 			</section>
 		</aside>

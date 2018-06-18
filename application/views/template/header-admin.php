@@ -60,16 +60,24 @@
 			<div class="navbar-right">
 				<ul class="nav navbar-nav">
 					<li class="dropdown profile-menu">
+						<?php if($this->session->userdata('status') == 'login'){?>
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							
 							<i class="fa fa-user"></i>
-							<span class="username">Username Login</span>
+							<span class="username"><?=$this->session->userdata('userNama')?></span>
 							<i class="caret"></i>
+							
 						</a>
+						<?php }else{?>
+						<a href="<?=base_url()?>c_login"><i class="fa fa-user"></i>
+							<span class="username">Login</span>
+						</a>
+							<?php }?>
 						<ul class="dropdown-menu box profile">
 							<li><div class="up-arrow"></div></li>
 							
 							<li>
-								<a href="../page/login/logout.php"><i class="fa fa-power-off"></i>Log Out</a>
+								<a href="<?=base_url()?>c_login/logout"><i class="fa fa-power-off"></i>Log Out</a>
 							</li>
 						</ul>
 					</li>

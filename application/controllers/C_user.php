@@ -77,6 +77,7 @@ class C_user extends CI_Controller {
     }
 
     public function ubahbarang(){
+    	$password = $this->input->post('password', true);
     	if($password != ''){
     		$data = array(
 	    		'userNama' => $this->input->post('username', true),
