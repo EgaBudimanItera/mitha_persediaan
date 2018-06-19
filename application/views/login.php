@@ -25,6 +25,7 @@
                 <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
                            
                     <div class="panel-body">
+                    	<?=@$this->session->flashdata('msg')?>
                         <form action="<?=base_url()?>c_login/proses_login" method="POST" id="login">
                             <hr />
                             
