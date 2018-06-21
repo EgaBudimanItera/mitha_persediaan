@@ -1,83 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<title>Login V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/font-awesome/css/font-awesome.min.css">
 
-	<head>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" href="<?=base_url()?>assets/css-login/util.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/css-login/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				
+				<form class="login100-form validate-form" action="<?=base_url()?>c_login/proses_login" method="POST">
+					<span class="login100-form-title p-b-26">
+						Stok Barang
+					</span>
+					<span class="login100-form-title p-b-48">
+						<i class="zmdi zmdi-font"></i>
+					</span>
+					<?=@$this->session->flashdata('msg')?>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+						<input class="input100" type="text" name="username" placeholder="username">
+						<!-- <span class="focus-input100" data-placeholder="Email"></span> -->
+					</div>
 
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" type="password" name="password" placeholder="password">
+						<!-- <span class="focus-input100" data-placeholder="Password"></span> -->
+					</div>
 
-	    <title>Dashboard </title>
-	    <!-- <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/Logo_IAIN_Raden_Intan_Bandar_Lampung.png"/> -->
-	    <link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/font-awesome/css/font-awesome.min.css">
-	</head>
-	<body style="background-color: #E2E2E2;">
-		<br/><br/><br/>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="submit" class="login100-form-btn">
+								Login
+							</button>
+						</div>
+					</div>
 
-		<div class="container">
-        <div class="row text-center " style="padding-top:100px;">
-            <div class="col-md-12">
-                <h3>Aplikasi Stok Barang</h3>
-            </div>
-        </div>
-         <div class="row ">
-               
-                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                           
-                    <div class="panel-body">
-                    	<?=@$this->session->flashdata('msg')?>
-                        <form action="<?=base_url()?>c_login/proses_login" method="POST" id="login">
-                            <hr />
-                            
-                             <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                                    <input id="username" type="text" class="form-control" name="username" placeholder="Username" required />
-                                </div>
-                            <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required />
-                                </div>
-                            
-                             
-                             <div class="form-group">
-			                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Login</button>
-			                    Halaman utama, klik <a href="<?=base_url()?>">disini</a>
-			                </div>
-                            
-                            </form>
-                    </div>
-                   
-                </div>
-                
-                
-        </div>
-    </div>
+					<div class="text-center p-t-115">
+						<!-- <span class="txt1">
+							Don’t have an account?
+						</span>
 
-		<!-- <div class="container">
-		    <div class="row">
-		        <div class="col-md-offset-4 col-md-4 login-from" style="border:solid thin #eae7de">
-		            <h4>Aplikasi Stok Barang</h4><hr/>
-		            <?=@$this->session->flashdata('msg')?>
-		            <form action="<?=base_url()?>c_login/proses_login" method="POST" id="login">
-		                <div class="form-group">
-		                    <label for="">Username</label>
-		                    <input id="username" type="text" class="form-control" name="username" placeholder="Username" required />
-		                </div>
-		                <div class="form-group">
-		                    <label for="">Password</label>
-		                    <input id="password" type="password" class="form-control" name="password" placeholder="Password" required />
-		                </div>
-		                
-		                <div>
-		                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Login</button>
-		                    Halaman utama, klik <a href="<?=base_url()?>">disini</a>
-		                </div>
-		            </form>
-		            <br />     
-		        </div>
-		    </div>
-		</div>  -->
-		<script src="<?=base_url()?>assets/back-end/assets/plugins/jquery-2.1.0.min.js"></script>
-  <script src="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	</body>
+						<a class="txt2" href="#">
+							Sign Up
+						</a> -->
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/bootstrap/js/popper.js"></script>
+	<script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/daterangepicker/moment.min.js"></script>
+	<script src="<?=base_url()?>assets/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="<?=base_url()?>assets/js/main.js"></script>
+
+</body>
 </html>
