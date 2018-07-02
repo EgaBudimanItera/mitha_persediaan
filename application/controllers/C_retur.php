@@ -77,13 +77,13 @@ class C_retur extends CI_Controller {
                 'brngHarga' => $harga_akhir,
                 'brngJumlah' => $stok_akhir
             );
-            $this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+            // $this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
         }       
 
         
         $this->db->insert('retur', $data);
         $this->db->insert_batch('returdetail', $dataDetailBarangMasuk);
-        $this->db->insert_batch('historistok', $datahistorystok);
+        // $this->db->insert_batch('historistok', $datahistorystok);
         if($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             $this->session->set_flashdata(

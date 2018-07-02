@@ -20,7 +20,7 @@
 				<ul class="sidebar-menu">
 					
 					<li class="<?php if($link=='dashboard'){echo'active';}?>">
-						<a href="<?=base_url()?>">
+						<a href="<?=base_url()?>c_dashboard">
 							<i class="fa fa-home"></i><span>Dashboard</span>
 						</a>
 					</li>

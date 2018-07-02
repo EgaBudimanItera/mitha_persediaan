@@ -78,13 +78,13 @@ class C_barang_keluar extends CI_Controller {
                 'brngHarga' => $harga_akhir,
                 'brngJumlah' => $stok_akhir
             );
-            $this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
+            // $this->db->update('barang', $dataupdatebarang[$i], array('brngId' => $this->input->post('idBarangDetail', true)[$i]));
         }       
 
         
         $this->db->insert('barangkeluar', $data);
         $this->db->insert_batch('barangkeluardetail', $dataDetailBarangMasuk);
-        $this->db->insert_batch('historistok', $datahistorystok);
+        // $this->db->insert_batch('historistok', $datahistorystok);
         if($this->db->trans_status() === FALSE){
             $this->db->trans_rollback();
             $this->session->set_flashdata(
