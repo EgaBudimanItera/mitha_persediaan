@@ -15,7 +15,7 @@ class C_kategori extends CI_Controller {
             'link' => 'kategori',
             'list' => $this->M_kategori->list_kategori(),            
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formtambah(){
@@ -25,7 +25,7 @@ class C_kategori extends CI_Controller {
             'list' => $this->M_kategori->id_kategori(),
             'id_kategori' => $this->M_kategori->id_kategori()
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formubah(){
@@ -35,7 +35,7 @@ class C_kategori extends CI_Controller {
             'link' => 'kategori',
             'list' => $this->M_kategori->ambil_kategori('ktgrId',$ktgrId)->row(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function tambahkategori(){

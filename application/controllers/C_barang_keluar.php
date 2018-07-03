@@ -16,7 +16,7 @@ class C_barang_keluar extends CI_Controller {
             'link' => 'barangkeluar',
             'list' => $this->M_barangkeluar->lits_barangkeluar(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
 	}
 
 	public function formtambah(){
@@ -27,7 +27,7 @@ class C_barang_keluar extends CI_Controller {
             'barang' => $this->M_barangkeluar->list_barang(),
             'script' => 'script/barangkeluar'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
 	}
 
 	public function tambahbarang(){	
@@ -113,7 +113,7 @@ class C_barang_keluar extends CI_Controller {
             // 'script' => 'script/ubahbarangkeluar'
 
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function hapus_barangkeluar_dan_detail(){

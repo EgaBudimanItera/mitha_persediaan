@@ -15,7 +15,7 @@ class C_user extends CI_Controller {
             'link' => 'user',
             'list' => $this->M_user->list_user(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formtambah(){
@@ -24,7 +24,7 @@ class C_user extends CI_Controller {
             'link' => 'user',
             'script' => 'script/user'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function tambahbarang(){
@@ -73,7 +73,7 @@ class C_user extends CI_Controller {
             'data' => $this->M_user->ambil_user('userId', $brngId),           
             'script' => 'script/user'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function ubahbarang(){

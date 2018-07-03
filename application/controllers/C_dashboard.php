@@ -15,6 +15,6 @@ class C_dashboard extends CI_Controller {
             'link' => 'dashboard',
             
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 }

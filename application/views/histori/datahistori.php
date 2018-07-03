@@ -1,38 +1,18 @@
-    
-    
-   
-      <!-- BEGIN CONTENT HEADER -->
-      <section class="content-header">
-        <i class="fa fa-list-alt"></i>
-        <span>Data History Barang</span>
-        
-      </section>
-      <!-- END CONTENT HEADER -->
-      
-
-
-    <section class="content">
-        <div class="row">
-          <!-- BEGIN BASIC DATATABLES -->
-          <div class="col-md-12">
-            <div class="grid no-border">
-              <div class="grid-header">
-                <i class="fa fa-perusahaan"></i>
-                <span class="grid-title">
-                  <!-- <a href="<?=base_url()?>c_barang/formtambah">
-                    <button type="button" class="btn btn-primary btn-sm">
-                      <i class="fa fa-plus"></i> Tambahkan Barang
-                    </button>
-                  </a>   -->
-                </span>
-                <div class="pull-right grid-tools">
-                  <a data-widget="collapse" title="Collapse"><i class="fa fa-chevron-up"></i></a>
-                  <a data-widget="reload" title="Reload"><i class="fa fa-refresh"></i></a>
-                  <a data-widget="remove" title="Remove"><i class="fa fa-times"></i></a>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Data History Barang</h2>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
                 </div>
-              </div>
-              <div class="grid-body">
-                <div id="info-alert">
+            </div>
+            <div class="ibox-content">
+              <div id="info-alert">
                   <?=@$this->session->flashdata('msg')?>
                 </div>  
                 <form class="form-horizontal" id="frm_historistok" action="<?=base_url()?>c_histori/lihat_historistok_barangcetak" method="POST">
@@ -51,7 +31,7 @@
                     <label class="col-sm-3 control-label">Dari</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="text" class="form-control" name="dari" required>
+                        <input type="date" class="form-control" name="dari" required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />
@@ -61,7 +41,7 @@
                     <label class="col-sm-3 control-label">Sampai</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="text" class="form-control" name="sampai" required>
+                        <input type="date" class="form-control" name="sampai" required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />
@@ -78,9 +58,7 @@
                   </div>
                 </form>
                 <div id="result"></div>
-              </div>
             </div>
-          </div>
-          <!-- END BASIC DATATABLES -->
         </div>
-      </section>
+    </div>
+</div>

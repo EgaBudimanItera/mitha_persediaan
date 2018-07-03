@@ -16,7 +16,7 @@ class C_retur extends CI_Controller {
             'link' => 'retur',
             'list' => $this->M_retur->list_retur()
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formtambah(){
@@ -29,7 +29,7 @@ class C_retur extends CI_Controller {
             'barang' => $this->M_retur->list_barang(),
             'script' => 'script/retur'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function tambahbarang(){
@@ -133,7 +133,7 @@ class C_retur extends CI_Controller {
             // 'script' => 'script/ubahbarangkeluar'
 
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function ambil_detail_barang_by_kodebarang(){

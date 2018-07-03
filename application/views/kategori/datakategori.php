@@ -1,42 +1,25 @@
-    
-    
-    <!-- BEGIN CONTENT -->
-   
-      <!-- BEGIN CONTENT HEADER -->
-      <section class="content-header">
-        <h2> 
-          <i class="fa fa-list-alt"></i>
-          <span>Data Kategori Barang</span>
-        </h2>
-      </section>
-      <!-- END CONTENT HEADER -->
-      
-
-
-    <section class="content">
-        <div class="row">
-          <!-- BEGIN BASIC DATATABLES -->
-          <div class="col-md-12">
-            <div class="grid no-border">
-              <div class="grid-header">
-                <i class="fa fa-perusahaan"></i>
-                <span class="grid-title">
-                  <a href="<?=base_url()?>c_kategori/formtambah">
-                    <h6><button type="button" class="btn btn-primary">
-                      <i class="fa fa-plus"></i> Tambahkan kategori Barang
-                    </button></h6>
-                  </a>  
-                </span>
-                <div class="pull-right grid-tools">
-                  <a data-widget="collapse" title="Collapse"><i class="fa fa-chevron-up"></i></a>
-                  <a data-widget="reload" title="Reload"><i class="fa fa-refresh"></i></a>
-                  <a data-widget="remove" title="Remove"><i class="fa fa-times"></i></a>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Data Kategori Barang</h2>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
                 </div>
-              </div>
-              <div id="info-alert">
-                <?=@$this->session->flashdata('msg')?>
-              </div>  
-              <div class="grid-body">
+            </div>
+            <div class="ibox-content">
+                <a href="<?=base_url()?>c_kategori/formtambah">
+                  <h6><button type="button" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> Tambahkan kategori Barang
+                  </button></h6>
+                </a>  
+                <div id="info-alert">
+                  <?=@$this->session->flashdata('msg')?>
+                </div> 
                 <table id="dataTables1" class="data-table table table-bordered table-striped" >
                   <thead>
                     <tr>
@@ -75,9 +58,7 @@
                     ?>
                   </tbody>
                 </table>
-              </div>
             </div>
-          </div>
-          <!-- END BASIC DATATABLES -->
         </div>
-      </section>
+    </div>
+</div>

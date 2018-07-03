@@ -17,7 +17,7 @@ class C_histori extends CI_Controller {
             'data_barang' => $this->M_retur->list_barang(),
             'script' => 'script/historistok'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
 	}
 
 	public function lihat_historistok_barang(){

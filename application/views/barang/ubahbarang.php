@@ -1,33 +1,17 @@
-
-    <!-- BEGIN CONTENT -->
-    <aside class="right-side">
-      <!-- BEGIN CONTENT HEADER -->
-      <section class="content-header">
-        <i class="fa fa-file-text-o"></i>
-        <span>Ubah Data Barang</span>
-      </section>
-      <!-- END CONTENT HEADER -->
-      
-      <!-- BEGIN MAIN CONTENT -->
-      <section class="content">
-        <div class="row">
-          
-          <!-- BEGIN HORIZONTAL FORM -->
-          <div class="col-md-12">
-            <div class="grid">
-              <div class="grid-header">
-                <span class="grid-title">
-                  <button type="button" class="btn btn-primary" onclick="self.history.back()">
-                        <i class="fa fa-arrow-left"></i> Kembali
-                  </button>
-                </span>
-                <div class="pull-right grid-tools">
-                  <a data-widget="collapse" title="Collapse"><i class="fa fa-chevron-up"></i></a>
-                  <a data-widget="reload" title="Reload"><i class="fa fa-refresh"></i></a>
-                  <a data-widget="remove" title="Remove"><i class="fa fa-times"></i></a>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Ubah Data Barang</h2>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
                 </div>
-              </div>
-              <div class="grid-body">
+            </div>
+            <div class="ibox-content">
                 <form class="form-horizontal" role="form" action="<?=base_url()?>c_barang/ubahbarang" method="post">
                    <div class="form-group">
                     <label class="col-sm-2 control-label">Kode Barang</label>
@@ -43,7 +27,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Kategori Barang</label>
                     <div class="col-sm-3">
-                      <select class="form-control" name="brngKtgrId" required>
+                      <select class="form-control selectpicker" data-live-search="true" name="brngKtgrId" required>
                         <option value="">--pilih--</option>
                         <?php foreach($kategori as $data_kategori){?>
                         <option value="<?=$data_kategori->ktgrId?>" <?=$data_kategori->ktgrId == $list->brngKtgrId ? 'selected' : ''?>><?=$data_kategori->ktgrId?> - <?=$data_kategori->ktgrNama?></option>
@@ -89,15 +73,7 @@
                     </div>
                   </div>
                 </form>
-              </div>
             </div>
-          </div>
-          <!-- END HORIZONTAL FORM -->
         </div>
-        
-        
-       
-      </section>
-      <!-- END MAIN CONTENT -->
-    </aside>
-    <!-- END CONTENT -->
+    </div>
+</div>

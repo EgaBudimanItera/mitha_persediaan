@@ -15,7 +15,7 @@ class C_barang extends CI_Controller {
             'link' => 'barang',
             'list' => $this->M_barang->list_barang_join_kategori(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formtambah(){
@@ -26,7 +26,7 @@ class C_barang extends CI_Controller {
             'idbarang' => $this->M_barang->id_barang(),
             'script' => 'script/barang'
         );
-        $this->load->view('template/wrapper-admin', $data);   
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formubah(){
@@ -38,7 +38,7 @@ class C_barang extends CI_Controller {
             'kategori' => $this->M_barang->list_kategori(),
             'script' => 'script/barang'
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function tambahbarang(){

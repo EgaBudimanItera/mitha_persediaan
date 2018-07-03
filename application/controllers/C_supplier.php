@@ -15,7 +15,7 @@ class C_supplier extends CI_Controller {
             'link' => 'supplier',
             'list' => $this->M_supplier->list_supplier(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formtambah(){
@@ -24,7 +24,7 @@ class C_supplier extends CI_Controller {
             'link' => 'supplier',
             'id_supplier' => $this->M_supplier->id_supplier()
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function formubah(){
@@ -34,7 +34,7 @@ class C_supplier extends CI_Controller {
             'link' => 'supplier',
             'list' => $this->M_supplier->ambil_supplier('spliId',$splId)->row(),
         );
-        $this->load->view('template/wrapper-admin', $data);
+        $this->load->view('templatenew/wrapper', $data);
     }
 
     public function tambahsupplier(){

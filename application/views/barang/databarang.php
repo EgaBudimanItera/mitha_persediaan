@@ -1,37 +1,22 @@
-    
-    
-   
-      <!-- BEGIN CONTENT HEADER -->
-      <section class="content-header">
-        <i class="fa fa-list-alt"></i>
-        <span>Data Barang</span>
-        
-      </section>
-      <!-- END CONTENT HEADER -->
-      
-
-
-    <section class="content">
-        <div class="row">
-          <!-- BEGIN BASIC DATATABLES -->
-          <div class="col-md-12">
-            <div class="grid no-border">
-              <div class="grid-header">
-                <i class="fa fa-perusahaan"></i>
-                <span class="grid-title">
-                  <a href="<?=base_url()?>c_barang/formtambah">
-                    <button type="button" class="btn btn-primary btn-sm">
-                      <i class="fa fa-plus"></i> Tambahkan Barang
-                    </button>
-                  </a>  
-                </span>
-                <div class="pull-right grid-tools">
-                  <a data-widget="collapse" title="Collapse"><i class="fa fa-chevron-up"></i></a>
-                  <a data-widget="reload" title="Reload"><i class="fa fa-refresh"></i></a>
-                  <a data-widget="remove" title="Remove"><i class="fa fa-times"></i></a>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>Tambahkan Barang</h2>
+                    </div>
+                    <div class="col-md-4">
+                        
+                    </div>
                 </div>
-              </div>
-              <div class="grid-body">
+            </div>
+            <div class="ibox-content">
+                <a href="<?=base_url()?>c_barang/formtambah">
+                  <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fa fa-plus"></i> Tambahkan Barang
+                  </button>
+                </a>  
                 <div id="info-alert">
                   <?=@$this->session->flashdata('msg')?>
                 </div>  
@@ -76,9 +61,7 @@
                   <?php }?>
                   </tbody>
                 </table>
-              </div>
             </div>
-          </div>
-          <!-- END BASIC DATATABLES -->
         </div>
-      </section>
+    </div>
+</div>
