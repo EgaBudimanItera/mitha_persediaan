@@ -28,7 +28,7 @@
                     <label class="col-sm-3 control-label">Tanggal Retur</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date="2017-01-01T05:25:07Z" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="date" class="form-control" name="tanggalretur" required>
+                        <input type="text" class="form-control datepicker" name="tanggalretur" required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />

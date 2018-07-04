@@ -31,7 +31,7 @@
                     <label class="col-sm-3 control-label">Dari</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="date" class="form-control" name="dari" required>
+                        <input type="text" class="form-control datepicker" name="dari" required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />
@@ -41,7 +41,7 @@
                     <label class="col-sm-3 control-label">Sampai</label>
                     <div class="col-sm-9">
                       <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
-                        <input type="date" class="form-control" name="sampai" required>
+                        <input type="text" class="form-control datepicker" name="sampai" required>
                         <span class="input-group-addon"><i class="fa fa-th"></i></span>
                       </div>
                       <input type="hidden" id="dtp_input" value="" />

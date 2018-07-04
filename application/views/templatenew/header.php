@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets_v1/dataTable/css/dataTables.bootstrap.css"/>
+    <link rel="stylesheet" href="<?=base_url()?>assets/jquery.datetimepicker.css">
 </head>
 <body>
     <div id="wrapper">

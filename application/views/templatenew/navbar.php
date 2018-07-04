@@ -14,7 +14,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <?php if($this->session->userdata('status') != ''){?>
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Selamat datang, <?=@$this->session->userdata('nama')?></span>
+                    <span class="m-r-sm text-muted welcome-message">Selamat datang, <?=@$this->session->userdata('userNama')?></span>
                 </li>
 
                 <li>
