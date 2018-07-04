@@ -31,9 +31,11 @@
     <script type="text/javascript" src="<?=base_url()?>assets_v1/js/plugins/dataTables.bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/jquery.datetimepicker.full.min.js"></script>
     <script src="<?=base_url()?>assets/bootstrap-datetimepicker.min.js"></script>   
+    <script src="<?=base_url()?>assets/jquery-ui.js"></script>
+    <link rel="stylesheet" href="<?=base_url()?>assets/jquery-ui.css">
     <script>
       $( document).ready(function() {
-        $( ".datepicker" ).datetimepicker();
+        $( ".datepicker" ).datepicker();
       } );
     </script>
     <?php if(isset($script)){$this->load->view($script);}?>
