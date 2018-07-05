@@ -19,15 +19,26 @@ class C_retur extends CI_Controller {
         $this->load->view('templatenew/wrapper', $data);
     }
 
-    public function formtambah(){
+    public function formtambah($idbm =  ""){
         $data = array(
             'page' => 'retur/tambahretur',
             'link' => 'retur',
             'id_retur' => $this->M_retur->id_retur(),
+            'id_bm' => $idbm,
             'list_barang_masuk' => $this->M_retur->list_barang_masuk(),
             // 'supplier'=> $this->M_retur->list_supplier(),
             'barang' => $this->M_retur->list_barang(),
+            'bmnya' => $this->ambil_detail_barang_by_kodebarang($idbm),
             'script' => 'script/retur'
+        );
+        $this->load->view('templatenew/wrapper', $data);
+    }
+
+    public function formviewtambah(){
+        $data = array(
+            'page' => 'retur/databmretur',
+            'link' => 'retur',
+            'list' => $this->M_retur->list_barangmasuk_to_retur()
         );
         $this->load->view('templatenew/wrapper', $data);
     }
@@ -136,13 +147,14 @@ class C_retur extends CI_Controller {
         $this->load->view('templatenew/wrapper', $data);
     }
 
-    public function ambil_detail_barang_by_kodebarang(){
-        $kodebarangmasuk = $this->input->post('kodebarangmasuk', true);
+    public function ambil_detail_barang_by_kodebarang($kodebarangmasuk){
+        // $kodebarangmasuk = $this->input->post('kodebarangmasuk', true);
         $this->db->from('barangmasukdetail');
         $this->db->join('barang', 'barangmasukdetail.dbmkBrngId = barang.brngId');
         $this->db->where(array('dbmkBrmkId'=>$kodebarangmasuk));
         $this->db->order_by('dbmkBrngId', 'ASC');
         $data = $this->db->get();
-        echo json_encode($data->result_array());
+        return $data;
+        // echo json_encode($data->result_array());
     }
 }

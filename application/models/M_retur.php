@@ -30,6 +30,11 @@ class M_retur extends CI_Model {
         return $this->db->get();
     }
 
+    function list_barangmasuk_to_retur(){
+        $query = $this->db->query("SELECT dbmkBrmkId, brmkTanggal, spliNama, sum(dbmkHarga*dbmkJumlah) as total FROM vw_barangmasuk GROUP BY dbmkBrmkId ORDER BY dbmkBrmkId DESC");
+         return $query;  
+    }
+
     function list_barang(){
         return $this->db->get('barang');
     }
