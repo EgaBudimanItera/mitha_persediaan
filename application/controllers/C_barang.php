@@ -47,8 +47,10 @@ class C_barang extends CI_Controller {
             'brngKtgrId' => $this->input->post('brngKtgrId', true),
             'brngNama' => $this->input->post('brngNama', true),
             'brngKet' => $this->input->post('brngKet', true),
-            'brngHarga' => $this->input->post('brngHarga', true),
-            'brngJumlah' => $this->input->post('brngJumlah', true),
+            // 'brngHarga' => $this->input->post('brngHarga', true),
+            // 'brngJumlah' => $this->input->post('brngJumlah', true),
+            'brngHarga' => 0,
+            'brngJumlah' => 0,
          );
          $simpankategori = $this->M_barang->simpan_barang($data);
          if($simpankategori){
@@ -70,8 +72,8 @@ class C_barang extends CI_Controller {
             'brngKtgrId' => $this->input->post('brngKtgrId', true),
             'brngNama' => $this->input->post('brngNama', true),
             'brngKet' => $this->input->post('brngKet', true),
-            'brngHarga' => $this->input->post('brngHarga', true),
-            'brngJumlah' => $this->input->post('brngJumlah', true),
+            // 'brngHarga' => $this->input->post('brngHarga', true),
+            // 'brngJumlah' => $this->input->post('brngJumlah', true),
          );
          $simpankategori = $this->M_barang->ubah_barang('brngId', $this->input->post('brngId', true),$data);
          if($simpankategori){

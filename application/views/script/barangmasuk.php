@@ -31,6 +31,8 @@
 			}else if(harga_barang == ''){
 				alert('harga barang harus diisi');
 			}else{
+				$('#jumlahBarang').val("");
+				$('#hargaBarang').val("");
 				$('#tbDetailBarang tbody').append(tb);
 			}
 			

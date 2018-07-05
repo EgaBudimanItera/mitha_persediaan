@@ -52,7 +52,7 @@
                       <textarea name="brngKet" class="form-control" required><?=$list->brngKet?></textarea>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="col-sm-2 control-label">Harga Barang</label>
                     <div class="col-sm-3">
                       <input name="brngHarga" type="number" class="form-control" value="<?=$list->brngHarga?>" required>
@@ -63,7 +63,7 @@
                     <div class="col-sm-3">
                       <input name="brngJumlah" type="number" class="form-control" value="<?=$list->brngJumlah?>" required>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <div class="btn-group">
