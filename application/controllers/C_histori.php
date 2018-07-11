@@ -58,14 +58,14 @@ class C_histori extends CI_Controller {
 				<td><?=$no++?>.</td>
 				<td><?=$row->histTanggal?></td>
 				<td><?=$row->histStokMasuk?></td>
-				<td><?=$row->histHargaMasuk?></td>
-				<td><?=$row->histTotalMasuk?></td>
+				<td><?='RP. '.number_format(round($row->histHargaMasuk), 0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalMasuk),0, ',', '.')?></td>
 				<td><?=$row->histStokKeluar?></td>
-				<td><?=$row->histHargaKeluar?></td>
-				<td><?=$row->histTotalKeluar?></td>
+				<td><?='RP. '.number_format(round($row->histHargaKeluar),0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalKeluar),0, ',', '.')?></td>
 				<td><?=$row->histStokSaldo?></td>
-				<td><?=$row->histHargaSaldo?></td>
-				<td><?=$row->histTotalSaldo?></td>
+				<td><?='RP. '.number_format(round($row->histHargaSaldo),0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalSaldo),0, ',', '.')?></td>
 			</tr>
 	<?php
 		}
@@ -119,14 +119,14 @@ class C_histori extends CI_Controller {
 				<td><?=$no++?>.</td>
 				<td><?=$row->histTanggal?></td>
 				<td><?=$row->histStokMasuk?></td>
-				<td><?=$row->histHargaMasuk?></td>
-				<td><?=$row->histTotalMasuk?></td>
+				<td><?='RP. '.number_format(round($row->histHargaMasuk), 0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalMasuk),0, ',', '.')?></td>
 				<td><?=$row->histStokKeluar?></td>
-				<td><?=$row->histHargaKeluar?></td>
-				<td><?=$row->histTotalKeluar?></td>
+				<td><?='RP. '.number_format(round($row->histHargaKeluar),0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalKeluar),0, ',', '.')?></td>
 				<td><?=$row->histStokSaldo?></td>
-				<td><?=$row->histHargaSaldo?></td>
-				<td><?=$row->histTotalSaldo?></td>
+				<td><?='RP. '.number_format(round($row->histHargaSaldo),0, ',', '.')?></td>
+				<td><?='RP. '.number_format(round($row->histTotalSaldo),0, ',', '.')?></td>
 			</tr>
 	<?php
 		}
