@@ -51,7 +51,8 @@ class C_barang_masuk extends CI_Controller {
 		$data = array(
             'brmkId' => $this->input->post('brngId', true),
             'brmkSuplId' => $this->input->post('brngKtgrId', true),
-            'brmkTanggal' => $this->input->post('tanggalbarangmasuk', true)
+            'brmkTanggal' => date_format(date_create($this->input->post('tanggalbarangmasuk', true)),"Y-m-d"),
+            
         );
         $datahistorystok = array();
 		$dataDetailBarangMasuk = array();

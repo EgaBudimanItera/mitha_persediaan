@@ -22,8 +22,9 @@ class C_histori extends CI_Controller {
 
 	public function lihat_historistok_barang(){
 		$id_barang = $this->input->post('barang', true);
-		$dari = $this->input->post('dari', true);
-		$sampai = $this->input->post('sampai', true);
+		$dari = date_format(date_create($this->input->post('dari', true)),"Y-m-d");
+		$sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
+
 		$this->db->from('historistok');
 		$this->db->where('histBrngId', $id_barang);
 		$this->db->where('histTanggal >=', $dari);
@@ -75,8 +76,8 @@ class C_histori extends CI_Controller {
 
 	public function lihat_historistok_barangcetak(){
 		$id_barang = $this->input->post('barang', true);
-		$dari = $this->input->post('dari', true);
-		$sampai = $this->input->post('sampai', true);
+		$dari = date_format(date_create($this->input->post('dari', true)),"Y-m-d");
+		$sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
 		$this->db->from('historistok');
 		$this->db->where('histBrngId', $id_barang);
 		$this->db->where('histTanggal >=', $dari);

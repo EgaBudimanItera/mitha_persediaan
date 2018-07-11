@@ -34,7 +34,8 @@ class C_barang_keluar extends CI_Controller {
         $this->db->trans_begin();
         $data = array(
             'brklId' => $this->input->post('brngId', true),
-            'brklTanggal' => $this->input->post('tanggalbarangkeluar', true),
+            'brklTanggal' => date_format(date_create($this->input->post('tanggalbarangkeluar', true)),"Y-m-d"),
+            
             'brklPelanggan' => $this->input->post('pelanggan', true),
             'brklAlamat' => $this->input->post('alamatpelanggan', true),
          );
