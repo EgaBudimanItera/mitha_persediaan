@@ -51,6 +51,8 @@ class C_retur extends CI_Controller {
             'retuTanggal' => date_format(date_create($this->input->post('tanggalretur', true)),"Y-m-d"),
             
         );
+        print_r($data);
+        exit();
         $datahistorystok = array();
         $dataDetailBarangMasuk = array();
         $dataupdatebarang = array();
