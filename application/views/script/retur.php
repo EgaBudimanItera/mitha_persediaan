@@ -64,6 +64,21 @@
                 }                     
 			});	
 		});
+		$(document).on('change', '#barang', function(e){
+			e.preventDefault();
+			$('#stokharga').html('Loading...');
+			var id_barang = $('#barang').val();
+			$.ajax({
+				url: '<?=base_url()?>c_retur/get_stok_harga',
+				type: 'POST',
+				data: 'id_barang='+id_barang,
+				dataType: 'JSON',
+				success: function(msg){
+					$('#jumlahBarangMasuk').val(msg.jumlah);
+					$('#hargaBarangMasuk').val(msg.harga);
+				}
+			});
+		});
 	});
 </script>
 <script src="<?=base_url()?>assets/bootstrap-select.min.js"></script>

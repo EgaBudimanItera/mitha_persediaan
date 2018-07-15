@@ -38,7 +38,8 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">Kode Barang Masuk</label>
                     <div class="col-sm-9">
-                      <select class="form-control selectpicker" data-live-search="true" name="kodebarangmasuk" id="kodebarangmasuk"  required>
+                      <input type="hidden" name="kodebarangmasuk" id="kodebarangmasuk" value="<?=$id_bm?>" />
+                      <select class="form-control selectpicker" data-live-search="true" name="kodebarangmasukshow" id="kodebarangmasukshow" disabled  required>
                         <option value="">--pilih--</option>
                         <?php foreach($list_barang_masuk->result() as $rowbarangmasuk){?>
                           <option value="<?=$rowbarangmasuk->brmkId?>" <?=$id_bm==$rowbarangmasuk->brmkId ? 'selected': ''?>><?=$rowbarangmasuk->brmkId?> - <?=$rowbarangmasuk->spliNama?></option>
@@ -79,7 +80,7 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Harga Barang Masuk</label>
                       <div class="col-sm-9">
-                        <input type="number" name="hargaBarangMasuk" id="hargaBarangMasuk" readonly="" class="form-control">
+                        <input type="text" name="hargaBarangMasuk" id="hargaBarangMasuk" readonly="" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">
