@@ -51,6 +51,8 @@ class C_retur extends CI_Controller {
             'retuTanggal' => date_format(date_create($this->input->post('tanggalretur', true)),"Y-m-d"),
             
         );
+        // print_r($data);
+        // exit();
         $datahistorystok = array();
         $dataDetailBarangMasuk = array();
         $dataupdatebarang = array();
@@ -157,5 +159,15 @@ class C_retur extends CI_Controller {
         $data = $this->db->get();
         return $data;
         // echo json_encode($data->result_array());
+    }
+
+    public function get_stok_harga(){
+        $id_barangkeluar = $this->input->post('id_barang', true);
+        $row = $this->M_retur->ambil_detail_barang('brngId', $id_barangkeluar);
+        $data = array(
+            'jumlah' => $row->row()->brngJumlah,
+            'harga' => 'Rp.'. number_format($row->row()->brngHarga, 0, ',', '.'),
+        );
+        echo json_encode($data);
     }
 }

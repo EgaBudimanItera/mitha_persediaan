@@ -62,4 +62,8 @@ class M_retur extends CI_Model {
         $kodejadi  = "RT".date('my')."-".$kodemax;
         return $kodejadi;
    	}
+
+    function ambil_detail_barang($param_id, $id){
+        return $this->db->get_where('barang', array($param_id=>$id));
+    }
 }
