@@ -33,6 +33,8 @@ CREATE TABLE `barang` (
 
 /*Data for the table `barang` */
 
+insert  into `barang`(`brngId`,`brngKtgrId`,`brngNama`,`brngKet`,`brngHarga`,`brngJumlah`) values ('B00001','K001','oz','asa',27630.737704918032,488);
+
 /*Table structure for table `barangkeluar` */
 
 DROP TABLE IF EXISTS `barangkeluar`;
@@ -46,6 +48,8 @@ CREATE TABLE `barangkeluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `barangkeluar` */
+
+insert  into `barangkeluar`(`brklId`,`brklTanggal`,`brklPelanggan`,`brklAlamat`) values ('BK0718-000001','2018-07-16','a','a');
 
 /*Table structure for table `barangkeluardetail` */
 
@@ -62,9 +66,11 @@ CREATE TABLE `barangkeluardetail` (
   KEY `FK_barangkeluardetail1` (`dbrkBrklId`),
   CONSTRAINT `FK_barangkeluardetail` FOREIGN KEY (`dbrkBrngId`) REFERENCES `barang` (`brngId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_barangkeluardetail1` FOREIGN KEY (`dbrkBrklId`) REFERENCES `barangkeluar` (`brklId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `barangkeluardetail` */
+
+insert  into `barangkeluardetail`(`dbrkId`,`dbrkBrklId`,`dbrkBrngId`,`dbrkJumlah`,`dbrkHarga`) values (1,'BK0718-000001','B00001',2,1200);
 
 /*Table structure for table `barangkeluardetail_temp` */
 
@@ -97,6 +103,8 @@ CREATE TABLE `barangmasuk` (
 
 /*Data for the table `barangmasuk` */
 
+insert  into `barangmasuk`(`brmkId`,`brmkSuplId`,`brmkTanggal`) values ('BM0718-000001','S001','0000-00-00'),('BM0718-000002','S001','0000-00-00'),('BM0718-000003','S001','2018-07-11');
+
 /*Table structure for table `barangmasukdetail` */
 
 DROP TABLE IF EXISTS `barangmasukdetail`;
@@ -112,9 +120,11 @@ CREATE TABLE `barangmasukdetail` (
   KEY `FK_barangmasukdetail1` (`dbmkBrngId`),
   CONSTRAINT `FK_barangmasukdetail` FOREIGN KEY (`dbmkBrmkId`) REFERENCES `barangmasuk` (`brmkId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_barangmasukdetail1` FOREIGN KEY (`dbmkBrngId`) REFERENCES `barang` (`brngId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `barangmasukdetail` */
+
+insert  into `barangmasukdetail`(`dbmkId`,`dbmkBrmkId`,`dbmkBrngId`,`dbmkJumlah`,`dbmkHarga`) values (1,'BM0718-000001','B00001',200,27000),(2,'BM0718-000002','B00001',100,27500),(3,'BM0718-000003','B00001',200,27000);
 
 /*Table structure for table `barangmasukdetail_temp` */
 
@@ -156,9 +166,11 @@ CREATE TABLE `historistok` (
   PRIMARY KEY (`histId`),
   KEY `FK_historistok` (`histBrngId`),
   CONSTRAINT `FK_historistok` FOREIGN KEY (`histBrngId`) REFERENCES `barang` (`brngId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `historistok` */
+
+insert  into `historistok`(`histId`,`histTanggal`,`histStatus`,`histTranId`,`histBrngId`,`histStokMasuk`,`histHargaMasuk`,`histTotalMasuk`,`histStokKeluar`,`histHargaKeluar`,`histTotalKeluar`,`histHargaJual`,`histTotalJual`,`histStokSaldo`,`histHargaSaldo`,`histTotalSaldo`) values (1,'2018-07-11','Barang Masuk','BM0718-000001','B00001',200,27000,5400000,0,0,0,0,0,200,27000,5400000),(2,'2018-07-13','Barang Masuk','BM0718-000002','B00001',100,27500,2750000,0,0,0,0,0,300,27166.666666666668,8150000),(3,'2018-07-11','Barang Masuk','BM0718-000003','B00001',200,27000,5400000,0,0,0,0,0,500,27100,13550000),(4,'2018-07-16','Barang Keluar','BK0718-000001','B00001',0,0,0,2,27100,54200,1200,2400,498,27100,13495800),(5,'2018-07-16','Retur','RT0718-000001','B00001',-10,1200,-12000,0,0,0,0,0,488,27630.737704918032,13483800);
 
 /*Table structure for table `kategori` */
 
@@ -171,6 +183,8 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `kategori` */
+
+insert  into `kategori`(`ktgrId`,`ktgrNama`) values ('K001','Jilbab');
 
 /*Table structure for table `retur` */
 
@@ -187,6 +201,8 @@ CREATE TABLE `retur` (
 
 /*Data for the table `retur` */
 
+insert  into `retur`(`retuId`,`retuTanggal`,`retuBrmkId`) values ('RT0718-000001','2018-07-16','BM0718-000003');
+
 /*Table structure for table `returdetail` */
 
 DROP TABLE IF EXISTS `returdetail`;
@@ -202,9 +218,11 @@ CREATE TABLE `returdetail` (
   KEY `FK_returdetail1` (`dretRetuId`),
   CONSTRAINT `FK_returdetail` FOREIGN KEY (`dretBrngId`) REFERENCES `barang` (`brngId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_returdetail1` FOREIGN KEY (`dretRetuId`) REFERENCES `retur` (`retuId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `returdetail` */
+
+insert  into `returdetail`(`dretId`,`dretRetuId`,`dretBrngId`,`dretJumlah`,`dretHarga`) values (1,'RT0718-000001','B00001',10,1200);
 
 /*Table structure for table `returdetail_temp` */
 
@@ -236,6 +254,8 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `supplier` */
+
+insert  into `supplier`(`spliId`,`spliNama`,`spliOwner`,`spliAlamat`,`spliTelp`) values ('S001','ega','ega','aa','000');
 
 /*Table structure for table `userlogin` */
 

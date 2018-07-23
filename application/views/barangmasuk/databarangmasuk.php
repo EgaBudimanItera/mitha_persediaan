@@ -49,11 +49,11 @@
                             <i class="fa fa-edit"></i>
                           </button>
                         </a>
-                        <a href="<?=base_url()?>c_barang_masuk/hapus_barangmasuk_dan_detail/<?=$l->dbmkBrmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
+                        <!-- <a href="<?=base_url()?>c_barang_masuk/hapus_barangmasuk_dan_detail/<?=$l->dbmkBrmkId?>" onclick="return confirm('Apakah anda ingin menghapus data ini?')">
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>
-                        </a>                      
+                        </a>     -->                  
                       </td>
                     </tr>
                   <?php }?>
