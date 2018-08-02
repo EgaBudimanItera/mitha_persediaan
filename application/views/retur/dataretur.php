@@ -28,6 +28,7 @@
                       <th >Kode Barang Masuk</th>
                       <th >Nama Supplier</th>
                       <th >Tanggal</th>
+                      <th >Keterangan</th>
                       <th >Aksi</th>
                     </tr>
                   </thead>
@@ -43,6 +44,7 @@
                       <td><?=$l->retuBrmkId?></td>
                       <td><?=$l->spliNama?></td>
                       <td><?=$l->retuTanggal?></td>
+                      <td><?=$l->retuKet?></td>
                       <td>
                         <a href="<?=base_url()?>c_retur/formubah/<?=$l->retuId?>">
                           <button type="button" class="btn btn-primary">
@@ -53,7 +55,18 @@
                           <button type="button" class="btn btn-danger">
                             <i class="fa fa-trash-o"></i>                      
                           </button>
-                        </a>    -->                   
+                        </a>    -->  
+                        <?php
+                          if($l->retuStatus=="Belum Dikirim"){
+                        ?>
+                          <a href="<?=base_url()?>c_retur/kirim/<?=$l->retuId?>">
+                            <button type="button" class="btn btn-warning" title="Kirimkan Barang">
+                              <i class="fa fa-check"></i> 
+                            </button>
+                          </a>
+                        <?php    
+                          };
+                        ?>                       
                       </td>
                     </tr>
                   <?php }?>

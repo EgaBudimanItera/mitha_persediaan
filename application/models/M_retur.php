@@ -13,6 +13,12 @@ class M_retur extends CI_Model {
         return true;
     }
 
+    function ubah_retur($param_id, $id, $data){       
+        $this->db->where($param_id, $id);
+        $this->db->update('retur', $data); 
+        return true;
+    }
+
     function ambil_retur($param_id, $id){
        return $this->db->get_where('retur', array($param_id => $id));
     }

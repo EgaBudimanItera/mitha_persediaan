@@ -77,7 +77,10 @@ class C_histori extends CI_Controller {
 	public function lihat_historistok_barangcetak(){
 		$id_barang = $this->input->post('barang', true);
 		$dari = date_format(date_create($this->input->post('dari', true)),"Y-m-d");
+		$dari2 = date_format(date_create($this->input->post('dari', true)),"d M Y");
 		$sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
+		$sampai2 = date_format(date_create($this->input->post('sampai', true)),"d M Y");
+		$ttd = date('d M Y');
 		$this->db->from('historistok');
 		$this->db->where('histBrngId', $id_barang);
 		$this->db->where('histTanggal >=', $dari);
@@ -86,12 +89,18 @@ class C_histori extends CI_Controller {
 	?>
 		<link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/css/bootstrap.min.css">
 		<style type="text/css" media="print">
-		  @page { size: landscape; }
+		  @page { size: landscape; },
+		  .table-borderless td,
+		  .table-borderless th {
+    		border: 0;
+          }
 		</style>
 		<script type="text/javascript">
 			window.print();
 		</script>
-		<center><h4>Kartu Stok Barang</h4></center><hr/>
+		<center><h4>Kartu Stok Barang</h4></center>
+		<center><h4>Nama Perusahaan</h4></center>
+		<center><h4>Periode <?=$dari2?> S/D <?=$sampai2?></h4></center><hr/>
 		<table class="table table-striped table-bordered">
 		    <tr>
 		        <td rowspan="2">No</td>
@@ -132,6 +141,21 @@ class C_histori extends CI_Controller {
 		}
 	?>
 		</table>
+		
+		<br>
+		<table class="table table-borderless">
+		  <tr>
+		  	<td >&nbsp</td>
+		  	<td >&nbsp</td>
+		  	<td >Bandarlampung, <?=$ttd?></td>
+		  </tr>
+		  <tr>
+		  	<td >&nbsp</td>
+		  	<td >&nbsp</td>
+		  	<td >Kepala Gudang</td>
+		  </tr>
+		</table>
 	<?php
+
 	}
 }

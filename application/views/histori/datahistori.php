@@ -15,7 +15,7 @@
               <div id="info-alert">
                   <?=@$this->session->flashdata('msg')?>
                 </div>  
-                <form class="form-horizontal" id="frm_historistok" action="<?=base_url()?>c_histori/lihat_historistok_barangcetak" method="POST">
+                <form class="form-horizontal" id="frm_historistok" action="<?=base_url()?>c_histori/lihat_historistok_barangcetak" target="_blank" method="POST">
                  <div class="form-group">
                     <label class="col-sm-3 control-label">Nama Barang</label>
                     <div class="col-sm-9">

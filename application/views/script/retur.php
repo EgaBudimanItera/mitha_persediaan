@@ -75,7 +75,7 @@
 				dataType: 'JSON',
 				success: function(msg){
 					$('#jumlahBarangMasuk').val(msg.jumlah);
-					$('#hargaBarangMasuk').val(msg.harga);
+					$('#hargaBarang').val(msg.harga);
 				}
 			});
 		});

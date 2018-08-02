@@ -43,13 +43,35 @@ class C_retur extends CI_Controller {
         $this->load->view('templatenew/wrapper', $data);
     }
 
+    public function kirim($idretur){
+       $data=array(
+        'retuStatus'=>'Sudah Dikirim'
+       );
+       $ubahStatus=$this->M_retur->ubah_retur('retuId',$idretur,$data);
+       if($ubahStatus){
+        $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Success!</strong> Data berhasil disimpan !</div>'
+        );
+        redirect(base_url().'c_retur'); //location 
+       }
+       else{
+        $this->session->set_flashdata(
+                'msg', 
+                '<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" arial-label="close">&times;</a><strong>Peringatan!</strong> Data gagal disimpan !</div>'
+        );
+        redirect(base_url().'c_retur'); //location 
+       }
+    }
+
     public function tambahbarang(){
         $this->db->trans_begin();
         $data = array(
             'retuId' => $this->input->post('brngId', true),
             'retuBrmkId' => $this->input->post('kodebarangmasuk', true),
             'retuTanggal' => date_format(date_create($this->input->post('tanggalretur', true)),"Y-m-d"),
-            
+            'retuKet'=>$this->input->post('retuKet', true),
+
         );
         // print_r($data);
         // exit();
@@ -166,7 +188,7 @@ class C_retur extends CI_Controller {
         $row = $this->M_retur->ambil_detail_barang('brngId', $id_barangkeluar);
         $data = array(
             'jumlah' => $row->row()->brngJumlah,
-            'harga' => 'Rp.'. number_format($row->row()->brngHarga, 0, ',', '.'),
+            'harga' => $row->row()->brngHarga,
         );
         echo json_encode($data);
     }

@@ -47,7 +47,13 @@
                       </select>
                     </div>
                   </div>
-                  
+
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Alasan Retur</label>
+                    <div class="col-sm-9">
+                      <textarea name="retuKet" class="col-md-12"></textarea> 
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="col-md-3">
                     </div>
@@ -71,30 +77,32 @@
                         </select>
                       </div>
                     </div>
+                     <div class="form-group">
+                      <label class="col-sm-3 control-label">Harga Barang Retur</label>
+                      <div class="col-sm-9">
+                        <input type="number" name="hargaBarang" id="hargaBarang" class="form-control">
+                      </div>
+                    </div>
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Jumlah Barang Masuk</label>
                       <div class="col-sm-9">
                         <input type="number" name="jumlahBarangMasuk" id="jumlahBarangMasuk" readonly="" class="form-control">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="col-sm-3 control-label">Harga Barang Masuk</label>
+                   <!--  <div class="form-group">
+                      <label class="col-sm-3 control-label">Harga Barang</label>
                       <div class="col-sm-9">
                         <input type="text" name="hargaBarangMasuk" id="hargaBarangMasuk" readonly="" class="form-control">
                       </div>
-                    </div>
+                    </div> -->
+
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Jumlah Barang Retur</label>
                       <div class="col-sm-9">
                         <input type="number" name="jumlahBarang" id="jumlahBarang" class="form-control">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="col-sm-3 control-label">Harga Barang Retur</label>
-                      <div class="col-sm-9">
-                        <input type="number" name="hargaBarang" id="hargaBarang" class="form-control">
-                      </div>
-                    </div>
+                   
                     <div class="form-group">
                       <label class="col-sm-3 control-label"></label>
                       <div class="col-sm-9">
