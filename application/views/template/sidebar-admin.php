@@ -55,11 +55,22 @@
 							<i class="fa fa-reorder"></i><span>Data Retur</span>	
 						</a>
 					</li>
+					<li class="<?php if($link=='retur'){echo'active';}?>">
+						<a href="<?=base_url()?>c_retur">
+							<i class="fa fa-reorder"></i><span>Data Retur</span>	
+						</a>
+					</li>
+					<li class="<?php if($link=='lapretur'){echo'active';}?>">
+						<a href="<?=base_url()?>c_retur/formlapretur">
+							<i class="fa fa-folder"></i><span>Laporan Retur</span>	
+						</a>
+					</li>
 					<li class="<?php if($link=='histori'){echo'active';}?>">
 						<a href="<?=base_url()?>c_histori">
 							<i class="fa fa-folder"></i><span>Histori Barang</span>	
 						</a>
 					</li>
+					
 					<?php }?>
 					<?php if($this->session->userdata('level') == 'pimpinan'){?>
 					<li class="<?php if($link=='user'){echo'active';}?>">

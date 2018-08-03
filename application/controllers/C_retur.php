@@ -19,6 +19,15 @@ class C_retur extends CI_Controller {
         $this->load->view('templatenew/wrapper', $data);
     }
 
+    public function formlapretur(){
+        $data = array(
+            'page' => 'retur/lapretur',
+            'link' => 'lapretur',
+            
+        );
+        $this->load->view('templatenew/wrapper', $data);    
+    }
+
     public function formtambah($idbm =  ""){
         $data = array(
             'page' => 'retur/tambahretur',
@@ -191,5 +200,18 @@ class C_retur extends CI_Controller {
             'harga' => $row->row()->brngHarga,
         );
         echo json_encode($data);
+    }
+
+    public function cetakretur(){
+        $dari = date_format(date_create($this->input->post('dari', true)),"Y-m-d");
+        $dari2 = date_format(date_create($this->input->post('dari', true)),"d M Y");
+        $sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
+        $sampai2 = date_format(date_create($this->input->post('sampai', true)),"d M Y");
+        $ttd = date('d M Y');
+        $this->db->query("SELECT * FROM returdetail JOIN retur ON(dretRetuId=retuId) JOIN barang ON(dretBrngId=brngId) WHERE retuTanggal BETWEEN '$dari' and '$sampai'");
+        
+        $data = $this->db->get();
+
+        var_dump($data);
     }
 }
