@@ -234,6 +234,7 @@ class C_retur extends CI_Controller {
                 <td>Kode Retur</td>
                 <td>Tanggal</td>
                 <td>Nama Barang</td>
+                <td>Status</td>
                 <td>Harga</td>
                 <td>Jumlah</td>
             </tr>
@@ -246,12 +247,13 @@ class C_retur extends CI_Controller {
                 <td><?=$row->retuId?></td>
                 <td><?=date_format(date_create($row->retuTanggal), 'd M Y')?></td>
                 <td><?=$row->brngNama?></td>
+                <td><?=$row->retuStatus?></td>
                 <td><?='Rp. '.number_format($row->dretHarga, 0, ',', '.')?></td>
                 <td><?=$row->dretJumlah?></td>
             </tr>
             <?php }?>
             <tr>
-                <td colspan="4" align="right">Total</td>
+                <td colspan="5" align="right">Total</td>
                 <td><?='Rp. '.number_format($total_harga, 0, ',', '.')?></td>
                 <td><?=$total_jumlah?></td>
             </tr>
