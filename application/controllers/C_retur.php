@@ -208,9 +208,8 @@ class C_retur extends CI_Controller {
         $sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
         $sampai2 = date_format(date_create($this->input->post('sampai', true)),"d M Y");
         $ttd = date('d M Y');
-        $this->db->query("SELECT * FROM returdetail JOIN retur ON(dretRetuId=retuId) JOIN barang ON(dretBrngId=brngId) WHERE retuTanggal BETWEEN '$dari' and '$sampai'");
-        
-        $data = $this->db->get();
+        $this->db->select('*')->from('returdetail')->join('retur','dretRetuId=retuId')->join('barang','dretBrngId=brngId')->where('retuTanggal >=',$dari)->where('retuTanggal <=',$sampai);
+        $data=$this->db->get()->result();
 
         var_dump($data);
     }
