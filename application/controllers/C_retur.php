@@ -208,9 +208,68 @@ class C_retur extends CI_Controller {
         $sampai = date_format(date_create($this->input->post('sampai', true)),"Y-m-d");
         $sampai2 = date_format(date_create($this->input->post('sampai', true)),"d M Y");
         $ttd = date('d M Y');
-        $this->db->select('*')->from('returdetail')->join('retur','dretRetuId=retuId')->join('barang','dretBrngId=brngId')->where('retuTanggal >=',$dari)->where('retuTanggal <=',$sampai);
+        $this->db->select('*')->from('returdetail')->join('retur','dretRetuId=retuId')->join('barang','dretBrngId=brngId', 'left')->where('retuTanggal >=',$dari)->where('retuTanggal <=',$sampai);
         $data=$this->db->get()->result();
+        $total_harga = 0;
+        $total_jumlah = 0;
+        // var_dump($data);
+    ?>
+        <link rel="stylesheet" href="<?=base_url()?>assets/back-end/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <style type="text/css" media="print">
+          @page { size: landscape; },
+          .table-borderless td,
+          .table-borderless th {
+            border: 0;
+          }
+        </style>
+        <script type="text/javascript">
+            window.print();
+        </script>
+        <center><h4>Laporan Retur</h4></center>
+        <center><h4>Toko Fadila Jilbab</h4></center>
+        <center><h4>Periode <?=$dari2?> S/D <?=$sampai2?></h4></center><hr/>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td >No</td>
+                <td>Kode Retur</td>
+                <td>Tanggal</td>
+                <td>Nama Barang</td>
+                <td>Harga</td>
+                <td>Jumlah</td>
+            </tr>
+            <?php $no = 1;foreach($data as $row){
+                $total_jumlah += $row->dretJumlah;
+                $total_harga += $row->dretHarga;
+            ?>
+            <tr>
+                <td><?=$no++?>.</td>
+                <td><?=$row->retuId?></td>
+                <td><?=date_format(date_create($row->retuTanggal), 'd M Y')?></td>
+                <td><?=$row->brngNama?></td>
+                <td><?='Rp. '.number_format($row->dretHarga, 0, ',', '.')?></td>
+                <td><?=$row->dretJumlah?></td>
+            </tr>
+            <?php }?>
+            <tr>
+                <td colspan="4" align="right">Total</td>
+                <td><?='Rp. '.number_format($total_harga, 0, ',', '.')?></td>
+                <td><?=$total_jumlah?></td>
+            </tr>
+            <br>
+        <table>
+          <tr>
+            <td >&nbsp</td>
+            <td >&nbsp</td>
+            <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bandar Lampung, <?=$ttd?></td>
+          </tr>
+          <tr>
+            <td >&nbsp</td>
+            <td >&nbsp</td>
+            <td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kepala Gudang</td>
+          </tr>
+        </table>
+        </table>
+    <?php 
 
-        var_dump($data);
     }
 }
