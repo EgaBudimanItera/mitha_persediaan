@@ -30,6 +30,12 @@ class M_retur extends CI_Model {
         return $this->db->get();
     }
 
+    function ambil_detail_barang_retur($idmasuk,$idbarang){
+        $this->db->select('*')->from('barangmasukdetail')->where('dbmkBrmkId',$idmasuk)->where('dbmkBrngId',$idbarang);
+        return $this->db->get();
+           
+    }
+
     function list_barang_masuk(){
         $this->db->from('barangmasuk');
         $this->db->join('supplier', 'barangmasuk.brmkSuplId = supplier.spliId');

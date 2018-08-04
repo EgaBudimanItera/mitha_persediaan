@@ -68,10 +68,11 @@
 			e.preventDefault();
 			$('#stokharga').html('Loading...');
 			var id_barang = $('#barang').val();
+			var kode =$('#kodebarangmasuk').val();
 			$.ajax({
-				url: '<?=base_url()?>c_retur/get_stok_harga',
+				url: '<?=base_url()?>c_retur/get_stok_harga/',
 				type: 'POST',
-				data: 'id_barang='+id_barang,
+				data: 'id_barang='+id_barang+'&kode='+kode,
 				dataType: 'JSON',
 				success: function(msg){
 					$('#jumlahBarangMasuk').val(msg.jumlah);

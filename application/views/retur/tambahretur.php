@@ -43,7 +43,9 @@
                         <option value="">--pilih--</option>
                         <?php foreach($list_barang_masuk->result() as $rowbarangmasuk){?>
                           <option value="<?=$rowbarangmasuk->brmkId?>" <?=$id_bm==$rowbarangmasuk->brmkId ? 'selected': ''?>><?=$rowbarangmasuk->brmkId?> - <?=$rowbarangmasuk->spliNama?></option>
+
                         <?php }?>
+                        
                       </select>
                     </div>
                   </div>
@@ -75,6 +77,7 @@
                           <option value="<?=$data_barang->brngId?>"><?=$data_barang->brngId?> - <?=$data_barang->brngNama?></option>
                           <?php }?>
                         </select>
+
                       </div>
                     </div>
                      <div class="form-group">
