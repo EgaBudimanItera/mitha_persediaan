@@ -236,19 +236,22 @@ class C_retur extends CI_Controller {
                 <td>Kode Retur</td>
                 <td>Tanggal</td>
                 <td>Nama Barang</td>
+                 <td>Alasan Retur</td>
                 <td>Status</td>
                 <td>Harga</td>
                 <td>Jumlah</td>
             </tr>
             <?php $no = 1;foreach($data as $row){
                 $total_jumlah += $row->dretJumlah;
-                $total_harga += $row->dretHarga;
+                $subtotal=$row->dretHarga*$row->dretJumlah;
+                $total_harga += $subtotal;
             ?>
             <tr>
                 <td><?=$no++?>.</td>
                 <td><?=$row->retuId?></td>
                 <td><?=date_format(date_create($row->retuTanggal), 'd M Y')?></td>
                 <td><?=$row->brngNama?></td>
+                <td><?=$row->retuKet?></td>
                 <td><?=$row->retuStatus?></td>
                 <td><?='Rp. '.number_format($row->dretHarga, 0, ',', '.')?></td>
                 <td><?=$row->dretJumlah?></td>
@@ -256,8 +259,8 @@ class C_retur extends CI_Controller {
             <?php }?>
             <tr>
                 <td colspan="5" align="right">Total</td>
-                <td><?='Rp. '.number_format($total_harga, 0, ',', '.')?></td>
-                <td><?=$total_jumlah?></td>
+                <td colspan="4" align="right"><?='Rp. '.number_format($total_harga, 0, ',', '.')?></td>
+                
             </tr>
             <br>
         <table>
